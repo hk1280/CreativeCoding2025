@@ -63,3 +63,13 @@ This is a new paragraph.
 # Program or Be Programmed. 
 ## Ten Commands for a Digital Age. 
 ##### by Douglas Rushkoff
+
+> And as such technologies come to characterize the future of the way we live and work, the people programming them take on an increasingly important role in shaping our world and how it works. After that, it's the digital technologies themselves that will be shaping our world, both with and without our explicit cooperation (Rushkoff 8).
+
+This book was published in 2010, and now 15 years later, I feel that this statement has more weight in our current time as AI has made waves of changes in how we function, work, and think. The humans develop and train AI to function, and then AI is able to continue thinking on its own.
+
+> As a result, most of society remains one full dimensional leap of awareness and capability behind the few who manage to monopolize access to the real power of media age (Rushkoff 14).
+
+There's a big information gap between the small group who "determine the value-creating capabilities for themselves" and those who "have access to the capabilities given to them by others" (Rushkoff 13). Those in the former group, the elite, have more power and influence. Learning how to program and understanding how it works would group you in the elite.
+
+> What are the boundaries of my cognition? And while machines once replaced and usurped the value of human labor, computers and networks do more than usurp the value of human thought. They not only copy our intellectual processes--our repeatable programs--but they also discourage our more complex processes--our higher order cognition, contemplation, and innovation, and meaning making that should be the reward of "outsourcing" our arithmetic to silicon chips in the first place (Rushkoff 17).
