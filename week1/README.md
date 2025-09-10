@@ -70,6 +70,8 @@ This book was published in 2010, and now 15 years later, I feel that this statem
 
 > As a result, most of society remains one full dimensional leap of awareness and capability behind the few who manage to monopolize access to the real power of media age (Rushkoff 14).
 
-There's a big information gap between the small group who "determine the value-creating capabilities for themselves" and those who "have access to the capabilities given to them by others" (Rushkoff 13). Those in the former group, the elite, have more power and influence. Learning how to program and understanding how it works would group you in the elite.
+There's a big information gap between the small group who "determine the value-creating capabilities for themselves" and those who "have access to the capabilities given to them by others" (Rushkoff 13). Those in the former group, the elite, have more power and influence. Learning how to program and understand how it works would group you in the elite.
 
 > What are the boundaries of my cognition? And while machines once replaced and usurped the value of human labor, computers and networks do more than usurp the value of human thought. They not only copy our intellectual processes--our repeatable programs--but they also discourage our more complex processes--our higher order cognition, contemplation, and innovation, and meaning making that should be the reward of "outsourcing" our arithmetic to silicon chips in the first place (Rushkoff 17).
+
+While I do agree with some parts of this quote, I'm not sure if machines fully discourage "our more complex processes." To get to where we are today, humans needed to create and innovate to a higher level. 
