@@ -60,8 +60,8 @@ To start a new paragraph, leave an empty line between two lines of text.
 
 This is a new paragraph.
 
-# Program or Be Programmed. 
-## Ten Commands for a Digital Age. 
+# Program or Be Programmed
+## Ten Commands for a Digital Age 
 ##### by Douglas Rushkoff
 
 > And as such technologies come to characterize the future of the way we live and work, the people programming them take on an increasingly important role in shaping our world and how it works. After that, it's the digital technologies themselves that will be shaping our world, both with and without our explicit cooperation (Rushkoff 8).
