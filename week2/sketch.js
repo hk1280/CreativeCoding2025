@@ -38,5 +38,8 @@ function draw() {
   // set variable of the x y coordinate on top and applied changes to it
   triangle(originX+400,originY+400, originX-25, originY+350, originX+50, originY+600)
 
+  
+
+
 
 }
