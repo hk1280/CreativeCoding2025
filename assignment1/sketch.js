@@ -37,6 +37,18 @@ function draw() {
 
   stroke("rgba(252, 255, 101, 1)");
   circle(windowWidth*0.4,windowHeight*0.33,myDiameter*1.55);
+  
+  fill("rgb(0,0,0)");
+  noStroke();
+  beginShape();
+  vertex(windowWidth*0.32-50,50);
+  vertex(windowWidth*0.32,50);
+  vertex(windowWidth*0.15,windowHeight*0.4)
+  vertex(windowWidth*0.08,windowHeight*0.36);
+  endShape(CLOSE);
+  // the solid black filled 
+
+
 
 
 
