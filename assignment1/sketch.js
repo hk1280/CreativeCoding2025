@@ -1,6 +1,8 @@
-let myDiameter = 60;
+let myDiameter = 70;
 // setting the base diameter of the smaller circle
 // so I can use it as a variable
+
+let myCross;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -15,11 +17,11 @@ function draw() {
   noStroke();
   rect(windowWidth*0.52,50,50,windowHeight);
   // middle blue line down the middle
-  rect(windowWidth*0.32,windowHeight*0.45,windowWidth*0.68,50);
+  rect(windowWidth*0.28,windowHeight*0.45,windowWidth*0.68,50);
   // blue straight line across the middle 
 
   fill("rgb(0,0,0)");
-  rect(0,windowHeight*0.45+50,windowWidth*0.32,windowHeight*0.45+50)
+  rect(0,windowHeight*0.45+50,windowWidth*0.28,windowHeight*0.45+50)
   // black box on the bottom left
 
   fill("rgba(112, 112, 112, 1)");
@@ -36,7 +38,14 @@ function draw() {
   // smaller red circle on the right
 
   stroke("rgba(252, 255, 101, 1)");
-  circle(windowWidth*0.4,windowHeight*0.33,myDiameter*1.55);
+  circle(windowWidth*0.4,windowHeight*0.33,myDiameter*1.5);
+  // bigger yellow circle on the left
+  // used myDiameter as a variable
+  // made it 55% bigger
+ 
+  stroke("rgba(232, 101, 101, 1)");
+  strokeWeight(4);
+  line(0,100,150,100);
   
   fill("rgb(0,0,0)");
   noStroke();
@@ -46,7 +55,13 @@ function draw() {
   vertex(windowWidth*0.15,windowHeight*0.4)
   vertex(windowWidth*0.08,windowHeight*0.36);
   endShape(CLOSE);
-  // the solid black filled 
+  // the solid black filled polygon on the top left
+  
+
+
+
+
+
 
 
 
