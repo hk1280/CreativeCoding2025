@@ -7,7 +7,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   // making it scalable
   background("rgb(255, 237, 250)");
-  // light pink colored background
+  // shade 1 pink colored background
 
 }
 
@@ -62,7 +62,7 @@ function draw() {
 
   // blue vertical line in the bottom right quadrant
 
-  fill("rgba(87, 206, 227, 1)");
+  fill("rgba(148, 205, 215, 1)");
   noStroke();
   rect(windowWidth*0.8,windowHeight*0.57,windowWidth*0.044,windowHeight*0.28);
 
@@ -91,7 +91,7 @@ function draw() {
   // smaller purple circle on the right
   // set the diameter on top as a variable
   noFill();
-  stroke("rgba(255, 136, 235, 1)");
+  stroke("rgba(191, 133, 245, 1)");
   strokeWeight(3);
   myDiameter = width;
   circle(windowWidth*0.87,windowHeight*0.2,myDiameter*0.15);
@@ -103,9 +103,8 @@ function draw() {
   line(windowWidth*0.09,windowHeight*0.09,windowWidth*0.09,windowHeight*0.24);
 
 
-
   // green polygon on the bottom left quadrant
-  fill("rgba(99, 209, 91, 1)");
+  fill("rgba(132, 205, 127, 1)");
   noStroke();
   beginShape();
   vertex(windowWidth*0.28+5,windowHeight*0.75); // top left
@@ -117,7 +116,7 @@ function draw() {
 
   // bigger green circle on the top left
   noFill();
-  stroke("rgba(99, 209, 91, 1)");
+  stroke("rgba(132, 205, 127, 1)");
   circle(windowWidth*0.38,windowHeight*0.3,myDiameter*0.21);
   // used myDiameter as a variable
   // made it 40% bigger
@@ -144,7 +143,7 @@ function draw() {
   endShape(CLOSE);
 
 
-  // vertical pink line down the middle
+  // vertical shade 2 pink line down the middle
    fill("rgb(255, 184, 224)");
   noStroke();
   rect(windowWidth*0.51,windowHeight*0.05,windowWidth*0.07+2,windowHeight);
@@ -152,12 +151,12 @@ function draw() {
   rect(windowWidth*0.28,windowHeight*0.45,windowWidth*0.72,windowHeight*0.06);
 
 
-  // orange line at the top with 5.8% of the height
-  fill("rgb(250, 165, 51)");
+  // shade 4 pink line at the top with 5.8% of the height
+  fill("rgb(190, 89, 133)");
   noStroke();
   rect(0,0,windowWidth,windowHeight*0.058);
  
-  // orange line at the bottom
+  // shade 4 pinkline at the bottom
   rect(0,windowHeight-windowHeight*0.058,windowWidth,windowHeight*0.058);
   // same as the one on top
   // putting these at the end so they lay on top of the pink lines
