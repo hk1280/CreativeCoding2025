@@ -93,7 +93,7 @@ function draw() {
   noFill();
   stroke("rgba(191, 133, 245, 1)");
   strokeWeight(3);
-  myDiameter = 0.85*width;
+  myDiameter = 0.84*width;
   circle(windowWidth*0.87,windowHeight*0.2,myDiameter*0.13);
 
   // purple cross on the top left quadrant
@@ -117,7 +117,7 @@ function draw() {
   // bigger green circle on the top left
   noFill();
   stroke("rgba(132, 205, 127, 1)");
-  circle(windowWidth*0.38,windowHeight*0.3,myDiameter*0.21);
+  circle(windowWidth*0.38,windowHeight*0.3,myDiameter*0.2);
   // used myDiameter as a variable
   // made it 40% bigger
 
