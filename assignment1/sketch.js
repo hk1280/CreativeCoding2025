@@ -2,7 +2,6 @@ let myDiameter = 400;
 // setting the base diameter of the smaller circle
 // so I can use it as a variable
 
-let myCross;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -15,9 +14,9 @@ function setup() {
 function draw() {
 
 
-  // black box on the left
+  // black box on the bottom left
   fill("rgb(0,0,0)");
-  rect(0,windowHeight*0.45+50,windowWidth*0.28,windowHeight);
+  rect(0,windowHeight*0.51,windowWidth*0.28,windowHeight);
   // the height is not actually windowHeight but b/c
   // it's at the bottom you can't tell
 
@@ -45,9 +44,9 @@ function draw() {
   // vertical blue line down the middle
   fill("rgba(84, 101, 255, 1)");
   noStroke();
-  rect(windowWidth*0.52,50,50,windowHeight);
+  rect(windowWidth*0.51,windowHeight*0.05,windowWidth*0.07+2,windowHeight);
   // horizontal blue line across the middle
-  rect(windowWidth*0.28,windowHeight*0.45,windowWidth*0.72,50);
+  rect(windowWidth*0.28,windowHeight*0.45,windowWidth*0.72,windowHeight*0.06);
   
   // blue cross on the top right quadrant 
   stroke("rgba(84, 101, 255, 1)");
@@ -60,20 +59,21 @@ function draw() {
   fill("rgba(84, 101, 255, 1)");
   noStroke();
   beginShape();
-  vertex(windowWidth*0.28,windowHeight*0.45);
-  vertex(windowWidth*0.28,windowHeight*0.45+50);
-  vertex(windowWidth*0.10,windowHeight*0.45+3);
-  vertex(windowWidth*0.13,windowHeight*0.4);
+  vertex(windowWidth*0.28,windowHeight*0.45); // top right
+  vertex(windowWidth*0.28,windowHeight*0.51); // bottom right
+  vertex(windowWidth*0.10,windowHeight*0.45+3); // bottom left
+  vertex(windowWidth*0.13,windowHeight*0.4); // top left
   endShape(CLOSE);
 
   // green vertical line in the fourth quadrant
 
   fill("rgba(55, 129, 48, 1)");
   noStroke();
-  rect(windowWidth*0.8,windowHeight*0.57,35,windowHeight*0.28);
+  rect(windowWidth*0.8,windowHeight*0.57,windowWidth*0.044,windowHeight*0.28);
 
-  // horizontal green line across the middle
+  // horizontal green line across the middle in the bottom right
   // windowWidth for the width b/c it goes to the end of the page
+  // not actually windowWidth but ensures it covers till the end
   rect(windowWidth*0.8,windowHeight*0.66,windowWidth,35);
 
 
@@ -82,25 +82,25 @@ function draw() {
   fill("rgba(55, 129, 48, 1)");
   noStroke();
   beginShape();
-  vertex(windowWidth*0.8,windowHeight*0.66);
-  vertex(windowWidth*0.8,windowHeight*0.7);
-  vertex(windowWidth*0.52+50,windowHeight*0.63);
-  vertex(windowWidth*0.52+50,windowHeight*0.59);
+  vertex(windowWidth*0.8,windowHeight*0.66); // top right
+  vertex(windowWidth*0.8,windowHeight*0.7); // bottom right
+  vertex(windowWidth*0.52+50,windowHeight*0.63); // bottom left
+  vertex(windowWidth*0.52+50,windowHeight*0.59); // bottom right
   endShape(CLOSE);
 
   // black cross on the bottom right
   stroke("rgb(0, 0, 0)");
   strokeWeight(4);
-  line(windowWidth*0.9,windowHeight*0.45+52,windowWidth*0.9,windowHeight*0.82);
-  line(windowWidth*0.75,windowHeight*0.59,windowWidth*0.95,windowHeight*0.59);
+  line(windowWidth*0.9,windowHeight*0.45+52,windowWidth*0.9,windowHeight*0.82); // vertical line
+  line(windowWidth*0.75,windowHeight*0.59,windowWidth*0.95,windowHeight*0.59); // horizontal line
 
-  // gray line at the top with a height of 50
+  // gray line at the top with 5.8% of the height
   fill("rgba(112, 112, 112, 1)");
   noStroke();
-  rect(0,0,windowWidth,50);
+  rect(0,0,windowWidth,windowHeight*0.058);
  
   // gray line at the bottom
-  rect(0,windowHeight-50,windowWidth,50);
+  rect(0,windowHeight-windowHeight*0.058,windowWidth,windowHeight*0.058);
   // same as the one on top
   // putting these after the blue lines so they lay on top of them
 
@@ -119,14 +119,14 @@ function draw() {
 
 
 
-  // polygon on the top right quadrant
+  // polygon on the bottom left quadrant
   fill("rgba(252, 255, 101, 1)");
   noStroke();
   beginShape();
-  vertex(windowWidth*0.28+5,windowHeight*0.75);
-  vertex(windowWidth*0.38,windowHeight*0.75);
-  vertex(windowWidth*0.52,windowHeight-50);
-  vertex(windowWidth*0.42+5,windowHeight-50);
+  vertex(windowWidth*0.28+5,windowHeight*0.75); // top left
+  vertex(windowWidth*0.38,windowHeight*0.75); // top right
+  vertex(windowWidth*0.50+4,windowHeight-50); //bottom right
+  vertex(windowWidth*0.42+5,windowHeight-50); // bottom left
   endShape(CLOSE);
 
 
