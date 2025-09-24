@@ -99,7 +99,7 @@ function draw() {
   // purple cross on the top left quadrant
   stroke("rgba(191, 133, 245, 1)");
   strokeWeight(4);
-  line(0,windowHeight*0.16,windowWidth*0.17+1,windowHeight*0.13);
+  line(0,windowHeight*0.16,windowWidth*0.17+1,windowHeight*0.16);
   line(windowWidth*0.09,windowHeight*0.09,windowWidth*0.09,windowHeight*0.24);
 
 
