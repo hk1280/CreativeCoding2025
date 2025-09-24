@@ -24,8 +24,8 @@ function draw() {
   fill("rgb(0,0,0)");
   noStroke();
   beginShape();
-  vertex(windowWidth*0.23,50); // top left
-  vertex(windowWidth*0.32,50); // top right
+  vertex(windowWidth*0.23,windowHeight*0.058); // top left
+  vertex(windowWidth*0.32,windowHeight*0.058); // top right
   vertex(windowWidth*0.13,windowHeight*0.40); // bottom left
   vertex(windowWidth*0.06,windowHeight*0.37); // bottom right
   endShape(CLOSE);
