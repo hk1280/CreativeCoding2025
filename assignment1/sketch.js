@@ -85,8 +85,8 @@ function draw() {
   beginShape();
   vertex(windowWidth*0.8,windowHeight*0.66); // top right
   vertex(windowWidth*0.8,windowHeight*0.7); // bottom right
-  vertex(windowWidth*0.52+50,windowHeight*0.63); // bottom left
-  vertex(windowWidth*0.52+50,windowHeight*0.59); // bottom right
+  vertex(windowWidth*0.51+0.07*windowWidth+2,windowHeight*0.63); // bottom left
+  vertex(windowWidth*0.51+0.07*windowWidth+2,windowHeight*0.59); // top left
   endShape(CLOSE);
 
   // black cross on the bottom right
