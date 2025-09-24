@@ -93,7 +93,7 @@ function draw() {
   noFill();
   stroke("rgba(191, 133, 245, 1)");
   strokeWeight(3);
-  myDiameter = 0.9*width;
+  myDiameter = 0.85*width;
   circle(windowWidth*0.87,windowHeight*0.2,myDiameter*0.12);
 
   // purple cross on the top left quadrant
