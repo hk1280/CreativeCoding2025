@@ -6,23 +6,23 @@ let myDiameter;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // making it scalable
-  background("rgba(0, 0, 0, 1)");
-  // cream colored background
+  background("rgb(255, 237, 250)");
+  // light pink colored background
 
 }
 
 function draw() {
 
 
-  // white box on the bottom left
-  fill("rgba(255, 255, 255, 1)");
+  // shade 3 of pink box on the bottom left
+  fill("rgb(236, 127, 169)");
   noStroke();
   rect(0,windowHeight*0.51,windowWidth*0.28,windowHeight);
   // the height is not actually windowHeight but b/c
   // it's at the bottom you can't tell
 
-  // the solid white filled polygon on the top left
-  fill("rgba(255, 255, 255, 1)");
+  // the solid shade 3 pink filled polygon on the top left
+  fill("rgb(236, 127, 169)");
   noStroke();
   beginShape();
   vertex(windowWidth*0.23,windowHeight*0.058); // top left
@@ -31,8 +31,8 @@ function draw() {
   vertex(windowWidth*0.06,windowHeight*0.37); // bottom right
   endShape(CLOSE);
 
-  // polygon on the top right quadrant in orange
-  stroke("rgba(255, 255, 255, 1)");
+  // polygon on the top right quadrant in shade 3 pink
+  stroke("rgb(236, 127, 169)");
   noFill();
   strokeWeight(3);
   beginShape();
@@ -43,16 +43,15 @@ function draw() {
   endShape(CLOSE);
 
   
-  
-  // pink cross on the top right quadrant 
-  stroke("rgba(255, 205, 247, 1)");
+  // shade 2 of pink cross on the top right quadrant 
+  stroke("rgb(255, 184, 224)");
   strokeWeight(4);
   line(windowWidth*0.67,windowHeight*0.13,windowWidth*0.83,windowHeight*0.13); // the horizontal line
   line(windowWidth*0.75,windowHeight*0.058,windowWidth*0.75,windowHeight*0.2); // the vertical line
 
-  // the angled extension of the horizontal pink line to the left
-  // in the first quadrant
-  fill("rgba(255, 136, 235, 1)");
+  // the angled extension of the horizontal shade 2 pink line to the left
+  // in the top right quadrant
+  fill("rgb(255, 184, 224)");
   noStroke();
   beginShape();
   vertex(windowWidth*0.28,windowHeight*0.45); // top right
@@ -63,7 +62,7 @@ function draw() {
 
   // blue vertical line in the bottom right quadrant
 
-  fill("rgba(190, 245, 255, 1)");
+  fill("rgba(87, 206, 227, 1)");
   noStroke();
   rect(windowWidth*0.8,windowHeight*0.57,windowWidth*0.044,windowHeight*0.28);
 
@@ -75,8 +74,6 @@ function draw() {
 
   // the angled extension of the horizontal green line to the left
   // in the bottom right quadrant
-  fill("rgba(190, 245, 255, 1)");
-  noStroke();
   beginShape();
   vertex(windowWidth*0.8,windowHeight*0.66); // top right
   vertex(windowWidth*0.8,windowHeight*0.66+windowHeight*0.044); // bottom right
@@ -84,13 +81,12 @@ function draw() {
   vertex(windowWidth*0.51+0.07*windowWidth+2,windowHeight*0.59); // top left
   endShape(CLOSE);
 
-  // orange cross on the bottom right
-  stroke("rgba(255, 255, 255, 1)");
+  // shade 3 of pink cross on the bottom right
+  stroke("rgb(236, 127, 169)");
   strokeWeight(4);
   line(windowWidth*0.9,windowHeight*0.51+1,windowWidth*0.9,windowHeight*0.82); // vertical line
   line(windowWidth*0.75,windowHeight*0.59,windowWidth*0.95,windowHeight*0.59); // horizontal line
 
-  
 
   // smaller purple circle on the right
   // set the diameter on top as a variable
@@ -109,7 +105,7 @@ function draw() {
 
 
   // green polygon on the bottom left quadrant
-  fill("rgba(43, 126, 37, 1)");
+  fill("rgba(99, 209, 91, 1)");
   noStroke();
   beginShape();
   vertex(windowWidth*0.28+5,windowHeight*0.75); // top left
@@ -121,13 +117,12 @@ function draw() {
 
   // bigger green circle on the top left
   noFill();
-  stroke("rgba(43, 126, 37, 1)");
+  stroke("rgba(99, 209, 91, 1)");
   circle(windowWidth*0.38,windowHeight*0.3,myDiameter*0.21);
   // used myDiameter as a variable
   // made it 40% bigger
 
   // green line on bottom left quadrant
-  stroke("rgba(43, 126, 37, 1)");
   strokeWeight(4);
   line(windowWidth*0.1,windowHeight*0.64,windowWidth*0.28,windowHeight*0.64);
 
@@ -137,10 +132,10 @@ function draw() {
   line(windowWidth*0.28+2,windowHeight*0.64,windowWidth*0.45,windowHeight*0.64);
   line(windowWidth*0.38,windowHeight*0.57,windowWidth*0.38,windowHeight*0.72);
 
-  // the red outline of polygon on the bottom left
+  // the white outline of polygon on the bottom left
   noFill();
   strokeWeight(4);
-  stroke("rgba(255, 0, 0, 1)");
+  stroke("rgba(255, 255, 255, 1)");
   beginShape();
   vertex(windowWidth*0.22,windowHeight*0.6);
   vertex(windowWidth*0.15,windowHeight*0.85);
@@ -150,7 +145,7 @@ function draw() {
 
 
   // vertical pink line down the middle
-  fill("rgba(255, 136, 235, 1)");
+   fill("rgb(255, 184, 224)");
   noStroke();
   rect(windowWidth*0.51,windowHeight*0.05,windowWidth*0.07+2,windowHeight);
   // horizontal pink line across the middle
