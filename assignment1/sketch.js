@@ -16,6 +16,7 @@ function draw() {
 
   // black box on the bottom left
   fill("rgb(0,0,0)");
+  noStroke();
   rect(0,windowHeight*0.51,windowWidth*0.28,windowHeight);
   // the height is not actually windowHeight but b/c
   // it's at the bottom you can't tell
@@ -91,7 +92,7 @@ function draw() {
   // black cross on the bottom right
   stroke("rgb(0, 0, 0)");
   strokeWeight(4);
-  line(windowWidth*0.9,windowHeight*0.45+52,windowWidth*0.9,windowHeight*0.82); // vertical line
+  line(windowWidth*0.9,windowHeight*0.51+1,windowWidth*0.9,windowHeight*0.82); // vertical line
   line(windowWidth*0.75,windowHeight*0.59,windowWidth*0.95,windowHeight*0.59); // horizontal line
 
   // gray line at the top with 5.8% of the height
@@ -126,8 +127,8 @@ function draw() {
   beginShape();
   vertex(windowWidth*0.28+5,windowHeight*0.75); // top left
   vertex(windowWidth*0.38,windowHeight*0.75); // top right
-  vertex(windowWidth*0.50+4,windowHeight-50); //bottom right
-  vertex(windowWidth*0.42+5,windowHeight-50); // bottom left
+  vertex(windowWidth*0.51,windowHeight-windowHeight*0.058); //bottom right
+  vertex(windowWidth*0.42+5,windowHeight-windowHeight*0.058); // bottom left
   endShape(CLOSE);
 
 
@@ -141,12 +142,12 @@ function draw() {
   // yellow line on bottom left quadrant
   stroke("rgba(246, 236, 128, 1)");
   strokeWeight(4);
-  line(windowWidth*0.1,windowHeight*0.64,windowWidth*0.28-3,windowHeight*0.64);
+  line(windowWidth*0.1,windowHeight*0.64,windowWidth*0.28,windowHeight*0.64);
 
   // red cross on the bottom left quadrant
   stroke("rgba(232, 101, 101, 1)");
   strokeWeight(4);
-  line(windowWidth*0.28,windowHeight*0.64,windowWidth*0.45,windowHeight*0.64);
+  line(windowWidth*0.28+2,windowHeight*0.64,windowWidth*0.45,windowHeight*0.64);
   line(windowWidth*0.38,windowHeight*0.57,windowWidth*0.38,windowHeight*0.72);
 
   // the white outline of polygon on the bottom left
