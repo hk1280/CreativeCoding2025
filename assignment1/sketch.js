@@ -1,5 +1,5 @@
-let myDiameter = 400;
-// setting the base diameter of the smaller circle
+let myDiameter;
+// setting the base diameter
 // so I can use it as a variable
 
 
@@ -109,7 +109,8 @@ function draw() {
   noFill();
   stroke("rgba(253, 0, 0, 1)");
   strokeWeight(3);
-  circle(windowWidth*0.87,windowHeight*0.2,myDiameter*0.3);
+  myDiameter = width;
+  circle(windowWidth*0.87,windowHeight*0.2,myDiameter*0.15);
 
   // red cross on the top left quadrant
   stroke("rgba(232, 101, 101, 1)");
@@ -133,7 +134,7 @@ function draw() {
   // bigger yellow circle on the top left
   noFill();
   stroke("rgba(252, 255, 101, 1)");
-  circle(windowWidth*0.38,windowHeight*0.3,myDiameter*0.4);
+  circle(windowWidth*0.38,windowHeight*0.3,myDiameter*0.21);
   // used myDiameter as a variable
   // made it 40% bigger
 
