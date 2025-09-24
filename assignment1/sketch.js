@@ -136,10 +136,10 @@ function draw() {
   strokeWeight(4);
   stroke("rgba(255, 255, 255, 1)");
   beginShape();
-  vertex(windowWidth*0.22,windowHeight*0.6);
-  vertex(windowWidth*0.15,windowHeight*0.85);
-  vertex(windowWidth*0.09,windowHeight*0.85)
-  vertex(windowWidth*0.16,windowHeight*0.6);
+  vertex(windowWidth*0.24,windowHeight*0.6); // top right
+  vertex(windowWidth*0.13,windowHeight*0.85); // bottom right
+  vertex(windowWidth*0.05,windowHeight*0.85) // bottom left
+  vertex(windowWidth*0.16,windowHeight*0.6); // top left
   endShape(CLOSE);
 
 
