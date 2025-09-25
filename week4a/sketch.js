@@ -18,24 +18,33 @@ function setup() {
 
 function draw() {
   background("rgba(250, 199, 110, 1)");
+  noLoop(); // prevents draw from looping
 
-  for(let x = 50;x<width-50;x+=100){
-  push();
-  translate(x,50);
-  // everything within this push/pop block
-  // will be centered, with 0,0 as the center
-  // point
+  for(y = 50; y<height-50; y+=100){
+    for(let x = 50;x<width-50;x+=100){
+      let circleSize;
+      circleSize = map(y,50,height-50,100,10);
+      circle(x,y,circleSize);
 
-  strokeWeight(3);
-  fill("rgba(250, 239, 144, 1)");
-  circle(0,0,100);
-  circle(-15,-10,10);
-  circle(15,-10,10);
-  arc(0,0,60,60,radians(30),radians(150));
-  pop();
+
+  //    push();
+  //    translate(x,50);
+  // // everything within this push/pop block
+  // // will be centered, with 0,0 as the center
+  // // point
+
+  //  strokeWeight(3);
+  //  fill("rgba(250, 239, 144, 1)");
+  //  circle(0,0,100);
+  //  circle(-15,-10,10);
+  //  circle(15,-10,10);
+  // let happiness;
+  // happiness=map(x,0,width,-25,25);
+  // noFill();
+  // arc(0,0,60,60,radians(0-happiness),radians(180+happiness));
+  // pop();
   }
-
-    // circle(x,50,100);
+}
   }
 
  
