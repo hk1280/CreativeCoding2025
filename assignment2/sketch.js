@@ -3,48 +3,71 @@
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-
-  // iteration operators:
-  // i++ : adds 1 to i
-  // i+=10 : adds 10 to 1
-  // i-- : subtracts 1 from i
-  // i-=5 : subtracts 5 from i
-
   for(let i = 0; i < 10; i++){
     console.log(i);
   }
-  
 }
 
 function draw() {
   background("#eec869ff");
-  // noLoop(); // prevents draw from looping
+  strokeWeight(3);
+  stroke("rgba(93, 90, 90, 1)");
 
-  for(y = 50; y < height - 50; y += 100) {
-    for(let x = 50; x < width - 50; x += 100) {
-      push();
-      translate(x,y);
-      let rotation;
-      rotation = map(y,50,height-50,0,PI);
-      rotate(rotation);
-      // everything within this push/pop block
-      // will be centered, with 0,0 as the center
-      // point
+  for (let i=0; i<width;i++){
+    if(i>0){
+      translate(100,0)
+    }
+  
+  
+  // drawing the leaf stem portion
+  beginShape();
+  fill("rgba(84, 222, 130, 1)")
+  curveVertex(0,50);
+  curveVertex(50,50);
+  curveVertex(25,7);
+  curveVertex(35,8);
+  curveVertex(38,7);
+  curveVertex(50,1);
+  curveVertex(62,7);
+  curveVertex(65,8);
+  curveVertex(75,7);
+  curveVertex(50,50);
+  curveVertex(100,50);
+  endShape();
 
-   strokeWeight(3);
-   fill("rgba(250, 239, 144, 1)");
-   circle(0,0,100);
-   circle(-15,-10,10);
-   circle(15,-10,10);
-   // happiness variable will control the endpoints of
-   // the arc in my smiley face
-   let happiness;
-   happiness=map(x,0,width,-25,25);
-   noFill();
-   arc(0,0,60,60,radians(0-happiness),radians(180+happiness));
-   pop();
-  }
-}
-  }
+  // drawing the body of strawberry
+  fill("rgba(235, 71, 142, 1)");
+  beginShape();
+  curveVertex(50,25);
+  curveVertex(50,25);
+  curveVertex(25,10);
+  curveVertex(5,25);
+  curveVertex(13,75);
+  curveVertex(50,100);
+  curveVertex(87,75);
+  curveVertex(95,25);
+  curveVertex(75,10);
+  curveVertex(50,25);
+  curveVertex(50,25);
+  endShape();
 
- 
+  // drawing the seeds
+  fill("rgba(93, 90, 90, 1)");
+  ellipse(38,45,5,13);
+  ellipse(62,45,5,13);
+  ellipse(50,68,5,13);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }}
