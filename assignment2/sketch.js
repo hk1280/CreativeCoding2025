@@ -13,10 +13,11 @@ function draw() {
   strokeWeight(3);
   stroke("rgba(93, 90, 90, 1)");
 
-  for (let i=0; i<width;i++){
-    if(i>0){
-      translate(100,0)
-    }
+  for (let y=0; y<height; y+=100){
+    for (let x=0; x<width;x+=100) {
+      push();
+      translate(x,y);
+
   
   
   // drawing the leaf stem portion
@@ -56,18 +57,8 @@ function draw() {
   ellipse(38,45,5,13);
   ellipse(62,45,5,13);
   ellipse(50,68,5,13);
+  
+  pop();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-  }}
+  }}}
