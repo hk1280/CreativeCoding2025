@@ -31,13 +31,16 @@ function draw() {
   // second one is for x axis
   // identical to the y axis but for the x axis
 
-  
-
   for (let y=0; y<height; y+=100){
     for (let x=0; x<width;x+=100) {
-      hue = map(x,0,width,0,255);
+      hue = map(x,0,width,0,120); // 120 to keep the shades from red to green
       sat = map(y,0,height,0,255);
-      fill(hue,sat,100);
+      fill(hue,sat,100); // 100 for brightness
+      
+      if (mouseX>width/2 && mouseY>height/2){
+      fill("rgba(248, 9, 9, 1)");
+
+  }
       push();
       translate(x,y);
 
@@ -61,6 +64,8 @@ function draw() {
   curveVertex(50,50);
   curveVertex(100,50);
   endShape();
+
+
 
   // drawing the body of strawberry
   // using curveVertex function to get the rounded lines
@@ -89,4 +94,6 @@ function draw() {
   pop();
 
 
-  }}}
+  }
+}
+}
