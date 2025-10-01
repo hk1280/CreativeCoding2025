@@ -59,13 +59,13 @@ function draw() {
         fill("rgba(123, 195, 254, 1)");
       }
 
-      // if (mouseY<width/2){
-      // let xRotation = map(x,0,width,0,radians(1));
-      // rotate(xRotation);
-      // } else if (mouseY>width/2){
-      // let yRotation = map(y,0,height,0,radians(1));
-      // rotate(yRotation); 
-      // }
+      if (mouseY<width/2){
+      let xRotation = map(x,0,width,0,radians(1));
+      rotate(xRotation);
+      } else if (mouseY>width/2){
+      let yRotation = map(y,0,height,0,radians(1));
+      rotate(yRotation); 
+      }
 
       push();
       // push & pop to start and stop an isolated sequence
