@@ -60,10 +60,11 @@ function draw() {
       // of instructions
       translate(x,y);
 
-      let scaling = map(y,0,height,1,1.5);
+      // going down the y axis, the strawberries get bigger from 
+      // original size to 1.2 times its size
+
+      let scaling = map(y,0,height,1,1.2);
       scale(scaling);
-
-
 
   // drawing a strawberry
   // making the whole thing fit within 100 by 100 pixels
@@ -126,8 +127,9 @@ function draw() {
   pop();
   }
 
-  // let moving = map(y,0,height,0,random(radians(90)));
+  // let moving = map(y,0,height,0,random(radians(40)));
   // rotate(moving);
+
 }
 
 }
