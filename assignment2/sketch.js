@@ -63,8 +63,10 @@ function draw() {
       // going down the y axis, the strawberries get bigger from 
       // original size to 1.2 times its size
 
-      let scaling = map(y,0,height,1,1.2);
-      scale(scaling);
+      let scalingY = map(y,0,height,1,1.3);
+      scale(scalingY);
+      let scalingX = map(x,0,width,1,1.3);
+      scale(scalingX);
 
   // drawing a strawberry
   // making the whole thing fit within 100 by 100 pixels
