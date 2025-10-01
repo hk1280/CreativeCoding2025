@@ -17,7 +17,7 @@ function setup() {
 }
 
 function draw() {
-  background("#febd18ff");
+  background("#f8da91ff");
   strokeWeight(3);
   stroke("rgba(93, 90, 90, 1)");
   let hue = 0;
