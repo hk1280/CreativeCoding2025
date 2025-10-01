@@ -51,12 +51,20 @@ function draw() {
       
       if (mouseX>width/2 && mouseY>height/2){ // mouse on bottom right half of canvas
       fill("rgba(248, 9, 9, 1)");
-      } else if (mouseX<width/2 && mouseY>height/2){
+      } else if (mouseX<width/2 && mouseY>height/2){ // on bottom left half
       fill("rgba(139, 255, 141, 1)");
-      } else if (mouseX>width/2 && mouseY<height/2){
+      } else if (mouseX>width/2 && mouseY<height/2){ // on top right half
         fill("rgba(224, 152, 255, 1)");
-      } else if (mouseX<width/2 && mouseY<height/2){
+      } else if (mouseX<width/2 && mouseY<height/2){ // on top left half
         fill("rgba(123, 195, 254, 1)");
+      }
+
+      if (mouseY<width/2){
+      let xRotation = map(x,0,width,0,radians(1));
+      rotate(xRotation);
+      } else if (mouseY>width/2){
+      let yRotation = map(y,0,height,0,radians(1));
+      rotate(yRotation); 
       }
 
       push();
@@ -64,10 +72,7 @@ function draw() {
       // of instructions
       translate(x,y);
 
-      let yRotation = map(y,0,height,0,radians(50));
-      rotate(yRotation);
-      // let xRotation = map(x,0,width,0,2*PI);
-      // rotate(xRotation);
+
 
   // drawing a strawberry
   // making the whole thing fit within 100 by 100 pixels
