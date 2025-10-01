@@ -119,8 +119,6 @@ function draw() {
   ellipse(50,68,5,13);
 
   pop();
-
-
   }
 }
 }
