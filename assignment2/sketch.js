@@ -44,25 +44,25 @@ function draw() {
 
       // map function takes a number and calibrates it from one range
       // to another
-      // mouseX usually runs from 0 to width but can be remapped
+      // x usually runs from 0 to width but can be remapped
       // to a range of 0-244 so that it could control shade
       // of color 
-
-      hue = map(x,0,width,0,120); // 120 to keep the shades from red to green
-      sat = map(y,0,height,0,255);
-      fill(hue,sat,100); // 100 for brightness
       // colors for the stems
+      hue = map(x,0,width,0,120); // 120 to keep the shades from red to green
+      // hue changes across the x axis
+      sat = map(y,0,height,100,255); // saturation from mid to high - want solid color
+      // the saturation of color changes down along the y
+      fill(hue,sat,100); // full brightness
 
-      if (mouseY>height/2){
-      let yRotation = map(y,0,width,0,radians(1));
-      rotate(yRotation);
-      } 
-      // mouse on bottom hald of the screen, rotate the strawberrries
 
       push();
       // push & pop to start and stop an isolated sequence
       // of instructions
       translate(x,y);
+
+      let scaling = map(y,0,height,1,1.5);
+      scale(scaling);
+
 
   // drawing a strawberry
   // making the whole thing fit within 100 by 100 pixels
