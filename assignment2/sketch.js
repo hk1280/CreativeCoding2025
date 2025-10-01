@@ -64,6 +64,9 @@ function draw() {
       // of instructions
       translate(x,y);
 
+      let rotation = map(x,0,width,0,PI);
+      rotate(rotation);
+
   // drawing a strawberry
   // making the whole thing fit within 100 by 100 pixels
 
