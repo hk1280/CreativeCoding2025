@@ -7,6 +7,13 @@ function setup() {
   for(let i = 0; i < 10; i++){
     console.log(i);
   }
+  // the first element is the variable that keeps track
+  // of the iterations
+  // i is the count of the loop
+  // the i < 10 is the condition; sets the amount of loops
+  // the loop will continue to run as long as i < 10
+  // i++ is the incrementation - how much to increase "i" by
+  // with every loop - in this case, 1
 }
 
 function draw() {
@@ -33,15 +40,28 @@ function draw() {
 
   for (let y=0; y<height; y+=100){
     for (let x=0; x<width;x+=100) {
+      // map function takes a number and calibrates it from one range
+      // to another
+      // mouseX usually runs from 0 to width but can be remapped
+      // to a range of 0-244 so that it could control shade
+      // of color 
       hue = map(x,0,width,0,120); // 120 to keep the shades from red to green
       sat = map(y,0,height,0,255);
       fill(hue,sat,100); // 100 for brightness
       
-      if (mouseX>width/2 && mouseY>height/2){
+      if (mouseX>width/2 && mouseY>height/2){ // mouse on bottom right half of canvas
       fill("rgba(248, 9, 9, 1)");
+      } else if (mouseX<width/2 && mouseY>height/2){
+      fill("rgba(139, 255, 141, 1)");
+      } else if (mouseX>width/2 && mouseY<height/2){
+        fill("rgba(224, 152, 255, 1)");
+      } else if (mouseX<width/2 && mouseY<height/2){
+        fill("rgba(123, 195, 254, 1)");
+      }
 
-  }
       push();
+      // push & pop to start and stop an isolated sequence
+      // of instructions
       translate(x,y);
 
   // drawing a strawberry
@@ -52,7 +72,7 @@ function draw() {
 
   beginShape();
   // fill("rgba(84, 222, 130, 1)")
-  curveVertex(0,50);
+  curveVertex(0,50); 
   curveVertex(50,50);
   curveVertex(25,7);
   curveVertex(35,8);
@@ -64,8 +84,6 @@ function draw() {
   curveVertex(50,50);
   curveVertex(100,50);
   endShape();
-
-
 
   // drawing the body of strawberry
   // using curveVertex function to get the rounded lines
