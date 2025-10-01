@@ -17,7 +17,7 @@ function setup() {
 }
 
 function draw() {
-  background("#eec869ff");
+  background("#febd18ff");
   strokeWeight(3);
   stroke("rgba(93, 90, 90, 1)");
   let hue = 0;
@@ -37,41 +37,32 @@ function draw() {
   // of canvas and increases by 100 with each loop
   // second one is for x axis
   // identical to the y axis but for the x axis
+  // the second line repeats the strawberries on the x axis
 
   for (let y=0; y<height; y+=100){
     for (let x=0; x<width;x+=100) {
+
       // map function takes a number and calibrates it from one range
       // to another
       // mouseX usually runs from 0 to width but can be remapped
       // to a range of 0-244 so that it could control shade
       // of color 
+
       hue = map(x,0,width,0,120); // 120 to keep the shades from red to green
       sat = map(y,0,height,0,255);
       fill(hue,sat,100); // 100 for brightness
-      
-      if (mouseX>width/2 && mouseY>height/2){ // mouse on bottom right half of canvas
-      fill("rgba(248, 9, 9, 1)");
-      } else if (mouseX<width/2 && mouseY>height/2){ // on bottom left half
-      fill("rgba(139, 255, 141, 1)");
-      } else if (mouseX>width/2 && mouseY<height/2){ // on top right half
-        fill("rgba(224, 152, 255, 1)");
-      } else if (mouseX<width/2 && mouseY<height/2){ // on top left half
-        fill("rgba(123, 195, 254, 1)");
-      }
+      // colors for the stems
 
-      if (mouseY<width/2){
-      let xRotation = map(x,0,width,0,radians(1));
-      rotate(xRotation);
-      } else if (mouseY>width/2){
-      let yRotation = map(y,0,height,0,radians(1));
-      rotate(yRotation); 
-      }
+      if (mouseY>height/2){
+      let yRotation = map(y,0,width,0,radians(1));
+      rotate(yRotation);
+      } 
+      // mouse on bottom hald of the screen, rotate the strawberrries
 
       push();
       // push & pop to start and stop an isolated sequence
       // of instructions
       translate(x,y);
-
 
   // drawing a strawberry
   // making the whole thing fit within 100 by 100 pixels
@@ -80,7 +71,6 @@ function draw() {
   // to go under the body of the strawberry
 
   beginShape();
-  // fill("rgba(84, 222, 130, 1)")
   curveVertex(0,50); 
   curveVertex(50,50);
   curveVertex(25,7);
@@ -97,7 +87,21 @@ function draw() {
   // drawing the body of strawberry
   // using curveVertex function to get the rounded lines
 
-  fill("rgba(235, 71, 142, 1)");
+  // depending on the placement of the mouse in one of the four
+  // quadrants, the color of the body of the strawberry changes
+  // having this before drawing the strawberry to have
+  // these rules apply to the body 
+
+      if (mouseX>width/2 && mouseY>height/2){ // mouse on bottom right half of canvas
+      fill("rgba(255, 81, 81, 1)");
+      } else if (mouseX<width/2 && mouseY>height/2){ // on bottom left half
+      fill("rgba(252, 124, 182, 1)");
+      } else if (mouseX>width/2 && mouseY<height/2){ // on top right half
+        fill("rgba(228, 135, 203, 1)");
+      } else if (mouseX<width/2 && mouseY<height/2){ // on top left half
+        fill("rgba(235, 71, 142, 1)");
+      }
+  
   beginShape();
   curveVertex(50,25);
   curveVertex(50,25);
