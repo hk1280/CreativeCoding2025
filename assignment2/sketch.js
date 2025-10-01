@@ -64,6 +64,7 @@ function draw() {
       scale(scaling);
 
 
+
   // drawing a strawberry
   // making the whole thing fit within 100 by 100 pixels
 
@@ -124,5 +125,9 @@ function draw() {
 
   pop();
   }
+
+  // let moving = map(y,0,height,0,random(radians(90)));
+  // rotate(moving);
 }
+
 }
