@@ -2,49 +2,84 @@
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
-
-  // iteration operators:
-  // i++ : adds 1 to i
-  // i+=10 : adds 10 to 1
-  // i-- : subtracts 1 from i
-  // i-=5 : subtracts 5 from i
-
-  for(let i = 0; i < 10; i++){
-    console.log(i);
-  }
   
 }
 
 function draw() {
-  background("#eec869ff");
-  // noLoop(); // prevents draw from looping
 
-  for(y = 50; y < height - 50; y += 100) {
-    for(let x = 50; x < width - 50; x += 100) {
-      push();
-      translate(x,y);
-      let rotation;
-      rotation = map(y,50,height-50,0,PI);
-      rotate(rotation);
-      // everything within this push/pop block
-      // will be centered, with 0,0 as the center
-      // point
+  // any transformations are reset at the beginning of
+  // draw
+  background("#bcf780ff");
+  circle(100,100,100);
+  circle(85,90,5);
+  circle(115,90,5)
+  arc(100,100,60,60,0,PI);
 
-   strokeWeight(3);
-   fill("rgba(250, 239, 144, 1)");
-   circle(0,0,100);
-   circle(-15,-10,10);
-   circle(15,-10,10);
-   // happiness variable will control the endpoints of
-   // the arc in my smiley face
-   let happiness;
-   happiness=map(x,0,width,-25,25);
-   noFill();
-   arc(0,0,60,60,radians(0-happiness),radians(180+happiness));
-   pop();
+  push();
+  rotate(radians(mouseX));
+  stroke("white");
+  strokeWeight(5);
+  line(0,0,100,0);
+  pop();
+
+  // translate is a TRANSFORMATION function
+  // it moves the coordinate matrix according to
+  // a new set of coordinates, which become
+  // the "new" 0,0
+
+  // push and pop ISOLATE a transformation
+  // anything enclosed within push and pop only applies
+  // within that enclosure
+  
+  push(); // push indicates the beginning of an isolated block
+
+  if(mouseX>width/2 && mouseY>height/2){ // if the test inside the () is met...
+    fill("pink");
+    // run this code
+  } else if(mouseX<width/2 && mouseY<height/2){
+    fill("orange");
+  } else { // otherwise...
+    fill("yellow");
+    // run this other code
   }
+    
+  if(mouseIsPressed == true){
+    fill("red");
+  }
+
+  // mouseIsPressed is a system variable that switches
+  // from false to true when the mouse is down
+  
+  translate(width/2,height/2);
+
+  let angle;
+  // map is a function that scales numbers proportionately
+  // parameters:
+  // 1: input variable to scale
+  // 2: input low end of input range
+  // 3: high end of input range
+  // 4: low end of output range
+  // 5: high end of output range
+  angle = map(mouseX,0,width,0,360);
+
+  rotate(radians(angle));
+
+  let scaleFactor; // making a variable to hold scale amount
+  scaleFactor = map(mouseY,0,height,0.1,3);
+
+  // scale makes the coordinate system larger or smaller
+  // it takes a "factor" as a parameter
+  // if you supply 2 parameters, it scales differently
+  // on x and y axes
+
+  scale(scaleFactor);
+
+  circle(0,0,100);
+  circle(-15,-10,5);
+  circle(15,-10,5);
+  arc(0,0,60,60,0,PI);
+  pop(); // pop indicates the end of an isolated block
+
+  // text function: text, x, y, of top left corner
+  text(mouseX + "," + mouseY,5,15);
 }
-  }
-
- 
