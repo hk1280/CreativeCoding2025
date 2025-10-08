@@ -75,6 +75,12 @@ for (let y=buttonBottom+80; y<windowHeight-80; y+=40){
     noFill();
     strokeWeight(2);
     stroke("rgba(244, 218, 69, 1)");
+
+    let scalingX = map(x,buttonLeft,buttonRight,1,1.3);
+    scale(scalingX);
+    // let scalingY = map(y,buttonBottom+80,windowHeight-80,1,1.3);
+    // scale(scalingY);
+
     circle(buttonLeft, 80, 10); 
     pop()
 
