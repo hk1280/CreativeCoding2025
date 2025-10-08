@@ -1,5 +1,5 @@
-let buttonWidth = 150;
-let buttonHeight = 20;
+let buttonWidth = 200;
+let buttonHeight = 40;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
