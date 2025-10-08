@@ -1,5 +1,11 @@
+// top part of jar
 let buttonWidth = 200;
 let buttonHeight = 40;
+let radius = 10;
+
+// waves
+
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -18,20 +24,44 @@ let buttonRight = buttonLeft+buttonWidth; // x coord of bottom right
 let buttonBottom = buttonTop + buttonHeight; // y coord of bottom right
 
 
-rect(buttonLeft, buttonTop, buttonWidth, buttonHeight,20)
-
 beginShape();
-curveVertex(buttonLeft, buttonBottom);
+curveVertex(buttonLeft+10, buttonBottom);
 curveVertex(buttonLeft+10, buttonBottom);
 curveVertex(buttonLeft+5, buttonBottom+22);
 curveVertex(buttonLeft-50, buttonBottom+80);
 curveVertex(buttonLeft-30, windowHeight-80);
 curveVertex(buttonRight+30, windowHeight-80);
 curveVertex(buttonRight+50, buttonBottom+80);
-curveVertex(buttonRight+5, buttonBottom+22);
+curveVertex(buttonRight-5, buttonBottom+22);
 curveVertex(buttonRight-10, buttonBottom);
-curveVertex(buttonRight, buttonBottom);
+curveVertex(buttonRight-10, buttonBottom);
 endShape();
 
+fill("rgba(247, 160, 84, 1)");
+beginShape();
+noStroke();
+curveVertex(buttonLeft, buttonBottom+100);
+curveVertex(buttonLeft-50, buttonBottom+100);
+curveVertex(buttonLeft-30, windowHeight-80);
+curveVertex(buttonRight+30, windowHeight-80);
+curveVertex(buttonRight+50, buttonBottom+100);
+curveVertex(buttonRight, buttonBottom+22);
+endShape();
 
+fill("white");
+stroke("rgb(0,0,0)");
+rect(buttonLeft, buttonTop, buttonWidth, buttonHeight,20)
+
+fill("rgba(255, 250, 92, 1)");
+noStroke();
+circle(windowWidth-150,100,100);
+
+// push();
+// translate(windowWidth-150,100);
+// rotate(radians(270));
+// strokeWeight(1);
+// for (let i=0,i<12;i++) {
+//   let x = cos(radians(i*(360/12)))*radius
+//   let y 
+// }
 }
