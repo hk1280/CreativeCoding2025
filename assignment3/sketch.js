@@ -1,9 +1,7 @@
-// top part of jar
+
 let buttonWidth = 200;
 let buttonHeight = 40;
 let radius = 10;
-
-// waves
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,7 +12,7 @@ function draw() {
   background("rgba(77, 75, 117, 1)");
   strokeWeight(4);
 
-
+// top part of jar
 
 let buttonLeft = width/2-buttonWidth/2; // x coord of top left
 let buttonTop = height/3; // y coordinate of top right
@@ -24,7 +22,8 @@ let buttonBottom = buttonTop + buttonHeight; // y coord of bottom right
 
 // body of the jar
 
-stroke("rgb(0,0,0)")
+stroke("rgba(0, 0, 0, 1)");
+fill("rgba(77, 75, 117, 1)");
 beginShape();
 curveVertex(buttonLeft+10, buttonBottom);
 curveVertex(buttonLeft+10, buttonBottom);
@@ -64,24 +63,27 @@ noStroke();
 circle(windowWidth-150,100,100);
 
 
-
 // bubbles in the liquid
+// two dimensional for loop for x and y axis
+// within the contents of the jar
 
-for (let x=buttonLeft; x<buttonRight; x+=40) { 
+
+for (let x=buttonLeft-20; x<buttonRight+40; x+=40) { 
 for (let y=buttonBottom+80; y<windowHeight-80; y+=40){
  
     push();
     translate(x,y);
     noFill();
-    strokeWeight(2);
+    strokeWeight(3);
     stroke("rgba(244, 218, 69, 1)");
 
-    let scalingX = map(x,buttonLeft,buttonRight,1,1.3);
+    let scalingX = map(x,buttonLeft,buttonRight,0.5,1);
     scale(scalingX);
-    // let scalingY = map(y,buttonBottom+80,windowHeight-80,1,1.3);
-    // scale(scalingY);
+    let scalingY = map(y,buttonBottom+80,windowHeight-80,0.4,1);
+    scale(scalingY);
 
-    circle(buttonLeft, 80, 10); 
+    
+    circle(0, 0, 20); 
     pop()
 
 }
