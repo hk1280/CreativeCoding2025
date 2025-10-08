@@ -5,15 +5,13 @@ let radius = 10;
 
 // waves
 
-
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  
+  angleMode(DEGREES);
 }
 
 function draw() {
-  background("rgba(234, 217, 120, 1)");
+  background("rgba(77, 75, 117, 1)");
   strokeWeight(4);
 
 
@@ -24,6 +22,9 @@ let buttonRight = buttonLeft+buttonWidth; // x coord of bottom right
 let buttonBottom = buttonTop + buttonHeight; // y coord of bottom right
 
 
+// body of the jar
+
+stroke("rgb(0,0,0)")
 beginShape();
 curveVertex(buttonLeft+10, buttonBottom);
 curveVertex(buttonLeft+10, buttonBottom);
@@ -37,6 +38,8 @@ curveVertex(buttonRight-10, buttonBottom);
 curveVertex(buttonRight-10, buttonBottom);
 endShape();
 
+// liquid in the jar
+
 fill("rgba(247, 160, 84, 1)");
 beginShape();
 noStroke();
@@ -48,20 +51,34 @@ curveVertex(buttonRight+50, buttonBottom+100);
 curveVertex(buttonRight, buttonBottom+22);
 endShape();
 
+// top of the jar
+
 fill("white");
 stroke("rgb(0,0,0)");
-rect(buttonLeft, buttonTop, buttonWidth, buttonHeight,20)
+rect(buttonLeft, buttonTop, buttonWidth, buttonHeight,20) // 20 gives the rounded the edges
+
+// sun / moon
 
 fill("rgba(255, 250, 92, 1)");
 noStroke();
 circle(windowWidth-150,100,100);
 
-// push();
-// translate(windowWidth-150,100);
-// rotate(radians(270));
-// strokeWeight(1);
-// for (let i=0,i<12;i++) {
-//   let x = cos(radians(i*(360/12)))*radius
-//   let y 
-// }
+
+
+// bubbles in the liquid
+
+for (let x=buttonLeft; x<buttonRight; x+=40) { 
+for (let y=buttonBottom+80; y<windowHeight-80; y+=40){
+ 
+    push();
+    translate(x,y);
+    noFill();
+    strokeWeight(2);
+    stroke("rgba(244, 218, 69, 1)");
+    circle(buttonLeft, 80, 10); 
+    pop()
+
+}
+}
+
 }
