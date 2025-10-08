@@ -15,6 +15,7 @@ function draw() {
   background("rgba(77, 75, 117, 1)");
   
 // top part of jar
+
 strokeWeight(4);
 let buttonLeft = width/2-buttonWidth/2; // x coord of top left
 let buttonTop = height/3; // y coordinate of top right
@@ -35,6 +36,7 @@ rect(0,windowHeight-80,width,height);
 // body of the jar
 
 stroke("rgba(0, 0, 0, 1)");
+fill("rgba(77, 75, 117, 1)");
 beginShape();
 curveVertex(buttonLeft+10, buttonBottom);
 curveVertex(buttonLeft+10, buttonBottom);
@@ -47,8 +49,6 @@ curveVertex(buttonRight-5, buttonBottom+22);
 curveVertex(buttonRight-10, buttonBottom);
 curveVertex(buttonRight-10, buttonBottom);
 endShape();
-
-
 
 // SCOBY (symbiotic culture of bacteria & yeast)
 // gelatinous, cellulose-based mat = pellicle
@@ -63,6 +63,28 @@ curveVertex(buttonRight+50, buttonBottom+100);
 curveVertex(buttonRight+50, buttonBottom+70);
 curveVertex(buttonRight, buttonBottom+70);
 endShape();
+
+
+
+
+
+// foam at top of jar
+// needs better shaping
+
+beginShape();
+curveVertex(buttonLeft,buttonTop);
+curveVertex(buttonLeft,buttonTop);
+curveVertex(buttonLeft+25,buttonTop-30);
+curveVertex(buttonLeft+40,buttonTop-26);
+curveVertex(buttonLeft+60,buttonTop-20);
+curveVertex(buttonLeft+70,buttonTop-30);
+curveVertex(buttonLeft+130,buttonTop-20);
+curveVertex(buttonLeft+140,buttonTop-30);
+curveVertex(buttonRight-10, buttonTop-30);
+curveVertex(buttonRight, buttonTop);
+curveVertex(buttonRight, buttonTop);
+endShape();
+
 
 // liquid in the jar
 
@@ -79,20 +101,13 @@ endShape();
 
 
 
-// sun / moon
-
-fill("rgba(255, 250, 92, 1)");
-noStroke();
-circle(windowWidth-150,100,100);
-
-
 // bubbles in the liquid row by row
 // two dimensional for loop for x and y axis
 // within the liquid of the jar
 
 
 for (let x=buttonLeft-20; x<buttonRight+40; x+=30) { 
-for (let y=buttonBottom+110; y<windowHeight-80; y+=60){
+for (let y=buttonBottom+110; y<windowHeight-80; y+=70){
  
     push();
     translate(x,y);
@@ -138,5 +153,34 @@ for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
 
 }
 }
+
+// bubbles in the sky
+
+for (let x=50; x<width-50; x+=80) { 
+  for (let y=40; y<height/3; y+=90){3
+ 
+    push();
+    translate(x,y);
+    noFill();
+    strokeWeight(4);
+    stroke("rgba(244, 218, 69, 1)");
+    // changing the sizes of the bubbles randomly across the x
+    // noLoop so that it's not constantly running and freaking out
+
+    let scalingZ = map(x,0,width,random(0.5),random(0.5));
+    scale(scalingZ);
+    noLoop();
+
+    circle(0, 0, 20); 
+    pop()
+
+}
+}
+
+// sun / moon
+
+fill("rgba(255, 250, 92, 1)");
+noStroke();
+circle(windowWidth-150,100,100);
 
 }
