@@ -8,7 +8,14 @@ https://www.homesteadherbsandhealing.com/2021/06/how-to-make-kombucha-batch-brew
 
 ![sketch of the fermentation jar](./timesketch.jpg)
 
+Idea
 - seconds - bubbles floating to the top
 - minutes - the liquid gets lighter as minutes pass 
 - hours - changing of the background from day to night
 - sun to moon
+
+Things to do
+- fit the liquid properly in the jar
+- make the background change from day to night
+- randomize the size of the bubbles in the jar
+- transition the sun to the moon
