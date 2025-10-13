@@ -10,12 +10,14 @@ let r = 0; // variable to hold red amount
 let g = 0; // variable to hold green amount
 let b = 0; // variable to hold blue amount
 
-// the above are global variable
-// accessible to everyone
+
 
 let ballX = 0; // variable to remember ball x position
 let ballSpeed = 0.5;
 let ballDiameter = 30;
+
+// the above are global variable
+// accessible to everyone
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -56,7 +58,7 @@ function draw() {
   fill("red");
   noStroke();
 
-  if(ballX>width-ballDiameter/2|| ballX<ballDiameter/2){
+  if(ballX>width-ballDiameter/2 || ballX<ballDiameter/2){
     ballSpeed = -ballSpeed;
   }
   

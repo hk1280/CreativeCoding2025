@@ -17,5 +17,5 @@ Idea
 Things to do
 - fit the liquid properly in the jar
 - make the background change from day to night
-- randomize the size of the bubbles in the jar
+- fix foam shape
 - transition the sun to the moon
