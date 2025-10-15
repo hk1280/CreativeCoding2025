@@ -212,10 +212,10 @@ for (let x=50; x<width-50; x+=80) {
 
 fill("rgba(255, 250, 92, 1)");
 noStroke();
-circle(windowWidth-150,100,100);
+circle(windowWidth-100,75,100);
 
   textSize(20);
-  text(hour() + ":" + minute() + ":" + second(), 30, 300)
+  text(hour() + ":" + minute() + ":" + second(),10, 250)
 
 
 }
