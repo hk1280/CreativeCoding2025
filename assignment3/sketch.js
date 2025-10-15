@@ -189,6 +189,9 @@ for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
 // They all had a random aspect to it, so i included the noLoop().
 // I realized the noLoop() would stop the time so I got rid of it.
 
+// diff rows of diff bubbles in the next 3 two dimensional 
+// for loops
+
 for (let x=50; x<width-50; x+=80) { 
   for (let y=40; y<height/4; y+=90){
  
@@ -208,13 +211,25 @@ for (let x=20; x<width-30; x+=80) {
     push();
     translate(x,y);
     noFill();
-    strokeWeight(2);
+    strokeWeight(1);
     stroke("rgba(220, 160, 30, 1)");
     circle(0, 0, 15); 
     pop()
 }
 }
 
+for (let x=70; x<width-30; x+=80) { 
+  for (let y=100; y<height/4; y+=100){
+ 
+    push();
+    translate(x,y);
+    noFill();
+    strokeWeight(3);
+    stroke("rgba(208, 188, 145, 1)");
+    circle(0, 0, 5); 
+    pop()
+}
+}
 // sun / moon
 
 fill("rgba(255, 250, 92, 1)");
