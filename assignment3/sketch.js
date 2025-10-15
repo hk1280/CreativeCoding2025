@@ -16,7 +16,6 @@ function setup() {
 function draw() {
   background("rgba(77, 75, 117, 1)");
 
-  
 // top part of jar
 
 strokeWeight(4);
@@ -71,7 +70,7 @@ endShape();
 
 // liquid in the jar
 
-// let liquidC = map(second(), 0, 60, 10, 50);
+// let liquidC = map(minute(), 0, 60, 10, 50);
 // fill(liquidC, 100, 255-liquidC);
 
 fill("rgba(196, 118, 50, 1)");
@@ -104,14 +103,15 @@ endShape();
 
 // bubbles in the liquid
 
-// I initally drew a row of bubbles in the entire liquid
+// I initally drew static rows of bubbles in the entire liquid
 // portion of the jar using a 2-dimensional for loop.
 // I changed it to a single for loop for a row of bubbles 
-// at the bottom because I wanted the bottom row of bubbles
+// at the bottom because I wanted that row of bubbles
 // to move up and disappear. I could not figure out how to 
 // get the entire for loop to move up so I chose to 
 // draw each bubble individually.
 
+// mapping the speed of the bubbles to the second function
 let bubbleSpeed = map(second(),0,60,0.1,0.7);
 bubblePosition = bubblePosition - bubbleSpeed; // minus to make it go the opposite direction - up!
 
@@ -120,6 +120,7 @@ bubblePosition = bubblePosition - bubbleSpeed; // minus to make it go the opposi
 // the bubbles "disappear" - no stroke.
 
 if(bubblePosition < windowHeight-80 && bubblePosition > buttonBottom+110) {
+
 strokeWeight(2);
 stroke("rgba(244, 218, 69, 1)");
 circle(buttonLeft-20, bubblePosition, 20);
@@ -131,7 +132,6 @@ circle(buttonLeft+130, bubblePosition, 20);
 circle(buttonLeft+160, bubblePosition, 20);
 circle(buttonLeft+190, bubblePosition, 20);
 circle(buttonLeft+220, bubblePosition, 20);
-
 } else if (bubblePosition < buttonBottom+110) {
   noStroke();
 }
