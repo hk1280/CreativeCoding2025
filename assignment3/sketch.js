@@ -6,10 +6,8 @@ let bubblePosition = 570;
 let bubbleSpeed = 0;
 let bubbleSize = 0;
 
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  angleMode(DEGREES);
   // frameRate(30); // sets a consistent frame rate
 }
 
@@ -41,12 +39,14 @@ rect(0,height-80,width,height);
 fill("rgba(216, 197, 111, 1)");
 noStroke();
 beginShape();
-curveVertex(buttonLeft, buttonBottom+70);
+curveVertex(buttonLeft-40, buttonBottom+70);
 curveVertex(buttonLeft-50, buttonBottom+70);
 curveVertex(buttonLeft-50, buttonBottom+100);
+curveVertex(buttonLeft-20, buttonBottom+110);
+curveVertex(buttonRight+20, buttonBottom+110);
 curveVertex(buttonRight+50, buttonBottom+100);
 curveVertex(buttonRight+50, buttonBottom+70);
-curveVertex(buttonRight, buttonBottom+70);
+curveVertex(buttonRight+40, buttonBottom+70);
 endShape();
 
 
@@ -69,9 +69,6 @@ endShape();
 
 
 // liquid in the jar
-
-// let earlyFerment = color(255,140,0);
-// let lateFerment = color(255,219,187);
 
 // remapping the minute to the range of dark orange
 // to light tan color
@@ -120,18 +117,14 @@ endShape();
 // at the bottom because I wanted that row of bubbles
 // to move up and disappear. I could not figure out how to 
 // get the entire for loop to move up so I chose to 
-// draw each bubble individually.
+// draw each bubble individually. When the bubbles hit
+// the top of the liquid, they restart at the bottom.
 
 // mapping the speed of the bubbles to the second function
-let bubbleSpeed = map(second(),0,59,0.1,0.7);
+let bubbleSpeed = map(second(),0,59,0.3,0.7);
 bubblePosition = bubblePosition - bubbleSpeed; // minus to make it go the opposite direction - up!
 
-// if the bubble is within the liquid part of the jar, 
-// it will be orange. once it leaves those parameters,
-// the bubbles "disappear" - no stroke.
-
-if(bubblePosition < windowHeight-80 && bubblePosition > buttonBottom+110) {
-
+if(bubblePosition < height-80 && bubblePosition > buttonBottom+110) {
 strokeWeight(2);
 stroke("rgba(244, 218, 69, 1)");
 circle(buttonLeft-20, bubblePosition, 20);
@@ -144,7 +137,7 @@ circle(buttonLeft+160, bubblePosition, 20);
 circle(buttonLeft+190, bubblePosition, 20);
 circle(buttonLeft+220, bubblePosition, 20);
 } else if (bubblePosition < buttonBottom+110) {
-  noStroke();
+  bubblePosition = height-80;
 }
 
 
