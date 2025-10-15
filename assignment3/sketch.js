@@ -139,6 +139,9 @@ endShape();
 // get the entire for loop to move up so I chose to 
 // draw each bubble individually. When the bubbles hit
 // the top of the liquid, they restart at the bottom.
+// After drawing the static bubbles of diff colors
+// and sizes in the middle using two dimensional for loops,
+// I resized the moving bubbles in the middle.
 
 // mapping the speed of the bubbles to the second function
 let bubbleSpeed = map(second(),0,59,0.3,0.7);
