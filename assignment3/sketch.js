@@ -195,13 +195,23 @@ for (let x=50; x<width-50; x+=80) {
     push();
     translate(x,y);
     noFill();
-    strokeWeight(4);
+    strokeWeight(2);
     stroke("rgba(244, 218, 69, 1)");
-    let scalingZ = map(x,0,width,0.3,0.5);
-    scale(scalingZ);
-    circle(0, 0, 20); 
+    circle(0, 0, 10); 
     pop()
+}
+}
 
+for (let x=20; x<width-30; x+=80) { 
+  for (let y=70; y<height/3; y+=100){
+ 
+    push();
+    translate(x,y);
+    noFill();
+    strokeWeight(2);
+    stroke("rgba(220, 160, 30, 1)");
+    circle(0, 0, 15); 
+    pop()
 }
 }
 
