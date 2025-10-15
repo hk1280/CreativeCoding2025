@@ -147,23 +147,44 @@ bubblePosition = bubblePosition - bubbleSpeed; // minus to make it go the opposi
 if(bubblePosition < height-80 && bubblePosition > buttonBottom+110) {
 strokeWeight(2);
 stroke("rgba(244, 218, 69, 1)");
-circle(buttonLeft-20, bubblePosition, 20);
-circle(buttonLeft+10, bubblePosition, 20);
-circle(buttonLeft+40, bubblePosition, 20);
-circle(buttonLeft+70, bubblePosition, 20);
+
+circle(buttonLeft+4, bubblePosition, 38);
+circle(buttonLeft+55, bubblePosition, 25);
 circle(buttonLeft+100, bubblePosition, 20);
-circle(buttonLeft+130, bubblePosition, 20);
-circle(buttonLeft+160, bubblePosition, 20);
-circle(buttonLeft+190, bubblePosition, 20);
-circle(buttonLeft+220, bubblePosition, 20);
+circle(buttonLeft+145, bubblePosition, 30);
+circle(buttonLeft+195, bubblePosition, 35);
 } else if (bubblePosition < buttonBottom+110) {
   bubblePosition = height-80;
 }
 
+// drawing static bubbles inside the liquid
+// using 2 dimensional for loops
 
-// for (let x=buttonLeft-20; x<buttonRight+40; x+=30) { 
-// for (let y=buttonBottom+110; y<windowHeight-80; y+=70){
+for (let x=buttonLeft-20; x<buttonRight+40; x+=48) { 
+for (let y=buttonBottom+120; y<windowHeight-90; y+=50){
 
+    push();
+    translate(x,y);
+    noFill();
+    strokeWeight(2);
+    stroke("rgba(220, 160, 30, 1)");
+    circle(0, 0, 12); 
+    pop()
+
+}}
+
+for (let x=buttonLeft-40; x<buttonRight+60; x+=70) { 
+for (let y=buttonBottom+150; y<windowHeight-100; y+=50){
+
+    push();
+    translate(x,y);
+    noFill();
+    strokeWeight(1);
+    stroke("rgba(255, 231, 180, 1)");
+    circle(0, 0, 7); 
+    pop()
+
+}}
 
 // the pellicle area has smaller bubbles in orange
 // visualizes as two rows of orange static bubbles
@@ -234,7 +255,7 @@ for (let x=70; x<width-30; x+=80) {
 
 fill("rgba(255, 250, 92, 1)");
 noStroke();
-circle(windowWidth-100,75,100);
+circle(windowWidth-100,75,200);
 
 fill("rgba(255, 253, 253, 1)");
 
