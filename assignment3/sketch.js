@@ -190,7 +190,7 @@ for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
 // I realized the noLoop() would stop the time so I got rid of it.
 
 for (let x=50; x<width-50; x+=80) { 
-  for (let y=40; y<height/3; y+=90){
+  for (let y=40; y<height/4; y+=90){
  
     push();
     translate(x,y);
@@ -203,7 +203,7 @@ for (let x=50; x<width-50; x+=80) {
 }
 
 for (let x=20; x<width-30; x+=80) { 
-  for (let y=70; y<height/3; y+=100){
+  for (let y=70; y<height/4; y+=100){
  
     push();
     translate(x,y);
