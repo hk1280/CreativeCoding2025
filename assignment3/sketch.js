@@ -67,7 +67,8 @@ endShape();
 
 
 // foam at top of jar
-// organic shape of foam~
+// organic shape of foam
+// a lot trial & error to get right shape
 
 beginShape();
 curveVertex(buttonLeft,buttonTop);
@@ -262,6 +263,7 @@ circle(windowWidth-100,75,200);
 
 fill("rgba(255, 253, 253, 1)");
 
+// time stamp - needed this to make sure it was running
   textSize(20);
   text(hour() + ":" + minute() + ":" + second(),10, 250)
 
