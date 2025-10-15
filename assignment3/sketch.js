@@ -10,7 +10,7 @@ let bubbleSize = 0;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES);
-  frameRate(30); // sets a consistent frame rate
+  // frameRate(30); // sets a consistent frame rate
 }
 
 function draw() {
@@ -70,10 +70,21 @@ endShape();
 
 // liquid in the jar
 
-// let liquidC = map(minute(), 0, 60, 10, 50);
-// fill(liquidC, 100, 255-liquidC);
+// let earlyFerment = color(255,140,0);
+// let lateFerment = color(255,219,187);
 
-fill("rgba(196, 118, 50, 1)");
+// remapping the minute to the range of dark orange
+// to light tan color
+// kombucha gets lighter as it ferments
+// dark orange is (160,90,40)
+// light tan is (210,170,210)
+
+let liquidR = map(minute(), 0, 59, 160, 210)
+let liquidG = map(minute(), 0, 59, 90, 170);
+let liquidB = map(minute(), 0, 59, 40, 210)
+fill(liquidR, liquidG, liquidB);
+
+// fill("rgba(196, 118, 50, 1)");
 beginShape();
 noStroke();
 curveVertex(buttonLeft, buttonBottom+100);
@@ -112,7 +123,7 @@ endShape();
 // draw each bubble individually.
 
 // mapping the speed of the bubbles to the second function
-let bubbleSpeed = map(second(),0,60,0.1,0.7);
+let bubbleSpeed = map(second(),0,59,0.1,0.7);
 bubblePosition = bubblePosition - bubbleSpeed; // minus to make it go the opposite direction - up!
 
 // if the bubble is within the liquid part of the jar, 
@@ -193,7 +204,7 @@ for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
 // I got rid of it.
 
 for (let x=50; x<width-50; x+=80) { 
-  for (let y=40; y<height/3; y+=90){3
+  for (let y=40; y<height/3; y+=90){
  
     push();
     translate(x,y);
