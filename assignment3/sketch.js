@@ -259,7 +259,7 @@ for (let x=70; x<width-30; x+=80) {
 
 fill("rgba(255, 250, 92, 1)");
 noStroke();
-circle(windowWidth-100,75,200);
+circle(windowWidth-120,100,150);
 
 fill("rgba(255, 253, 253, 1)");
 
