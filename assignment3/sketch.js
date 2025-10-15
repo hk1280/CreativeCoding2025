@@ -8,21 +8,37 @@ let bubbleSize = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // frameRate(30); // sets a consistent frame rate
 }
 
 function draw() {
-  background("rgba(77, 75, 117, 1)");
 
+// mapping the gradient in the background from day to night
+// to the hour function 
+// chose 2 specific colors to form the gradient (yellow and blue)
+// the range is from 0 to 1 (midnight to next midnight - a full day)
+
+  let backGradient = map(hour(),0,23,0,1);
+  let dayColor = color(255,230,150); // yellow
+  let nightColor = color(40,30,128); // dark blue 
+  let bgColors = lerpColor(dayColor,nightColor,backGradient);
+  background(bgColors);
+
+  // https://p5js.org/reference/p5/lerpColor/
+  // blends 2 colors to find a third color between them
+  // gradient!
+  // lerpColor(c1, c2, amt)
+  // (interpolate from this color, to this color, amount b/w 0 and 1)
+  // by default color() uses RGB model
+
+  
 // top part of jar
 
 strokeWeight(4);
-
+fill(bgColors);
 let buttonLeft = width/2-buttonWidth/2; // x coord of top left
 let buttonTop = height/3; // y coordinate of top right
 let buttonRight = buttonLeft+buttonWidth; // x coord of bottom right
 let buttonBottom = buttonTop + buttonHeight; // y coord of bottom right
-fill("rgba(77, 75, 117, 1)");
 stroke("rgb(0,0,0)");
 rect(buttonLeft, buttonTop, buttonWidth, buttonHeight,20) // 20 gives the rounded edges
 
@@ -51,17 +67,17 @@ endShape();
 
 
 // foam at top of jar
-// needs better shaping
+// organic shape of foam~
 
 beginShape();
 curveVertex(buttonLeft,buttonTop);
 curveVertex(buttonLeft,buttonTop);
-curveVertex(buttonLeft+25,buttonTop-30);
-curveVertex(buttonLeft+40,buttonTop-26);
-curveVertex(buttonLeft+60,buttonTop-20);
-curveVertex(buttonLeft+70,buttonTop-30);
+curveVertex(buttonLeft+20,buttonTop-30);
+curveVertex(buttonLeft+40,buttonTop-40);
+curveVertex(buttonLeft+80,buttonTop-20);
+curveVertex(buttonLeft+110,buttonTop-30);
 curveVertex(buttonLeft+130,buttonTop-20);
-curveVertex(buttonLeft+140,buttonTop-30);
+curveVertex(buttonLeft+160,buttonTop-30);
 curveVertex(buttonRight-10, buttonTop-30);
 curveVertex(buttonRight, buttonTop);
 curveVertex(buttonRight, buttonTop);
@@ -70,16 +86,20 @@ endShape();
 
 // liquid in the jar
 
+// same thing I did with the background
+// mapping the gradient of the liquid with the minute function
 // remapping the minute to the range of dark orange
 // to light tan color
 // kombucha gets lighter as it ferments
 // dark orange is (160,90,40)
-// light tan is (210,170,210)
+// light tan is (251,238,172)
 
-let liquidR = map(minute(), 0, 59, 160, 210)
-let liquidG = map(minute(), 0, 59, 90, 170);
-let liquidB = map(minute(), 0, 59, 40, 210)
-fill(liquidR, liquidG, liquidB);
+let liquidGradient = map(minute(),0,59,0,1);
+let darkColor = color(160,90,40);
+let lightColor = color(251,238,172)
+let liquidColor = lerpColor(darkColor, lightColor, liquidGradient);
+fill(liquidColor);
+
 
 // fill("rgba(196, 118, 50, 1)");
 beginShape();
@@ -143,31 +163,11 @@ circle(buttonLeft+220, bubblePosition, 20);
 
 // for (let x=buttonLeft-20; x<buttonRight+40; x+=30) { 
 // for (let y=buttonBottom+110; y<windowHeight-80; y+=70){
- 
-//     push();
-//     translate(x,y);
-//     noFill();
-//     strokeWeight(3);
-//     stroke("rgba(244, 218, 69, 1)");
 
-// //     // changing the sizes of the bubbles randomly across the x
-// //     // noLoop so that it's not constantly running and freaking out
 
-//     let scalingX = map(x,buttonLeft,buttonRight,random(),random(1.2));
-//     scale(scalingX);
-
-// //     // let scalingY = map(y,buttonBottom+80,windowHeight-80, random(0.5), random(1.2));
-// //     // scale(scalingY);
-// //     // noLoop();
-
-//     circle(0, 0, 20); 
-//     pop()
-
-// }
-// }
-
-// easier for me to think of as a separate nested loop
 // the pellicle area has smaller bubbles in orange
+// visualizes as two rows of orange static bubbles
+// executed by a two dimensional for loop below
 
 for (let x=buttonLeft-30; x<buttonRight+56; x+=50) { 
 for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
@@ -177,12 +177,6 @@ for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
     noFill();
     strokeWeight(2);
     stroke("rgba(242, 153, 45, 1)");
-    // changing the sizes of the bubbles randomly across the x
-    // noLoop so that it's not constantly running and freaking out
-
-    // let scalingY = map(x,buttonLeft,buttonRight,0.2,0.5);
-    // scale(scalingY);
-    // noLoop();
     circle(0, 0, 5); 
     pop()
 
@@ -193,8 +187,7 @@ for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
 
 // I originally had 3 separate two-dimensional for loops.
 // They all had a random aspect to it, so i included the noLoop().
-// I realized the noLoop() would stop the time so
-// I got rid of it.
+// I realized the noLoop() would stop the time so I got rid of it.
 
 for (let x=50; x<width-50; x+=80) { 
   for (let y=40; y<height/3; y+=90){
@@ -217,6 +210,8 @@ for (let x=50; x<width-50; x+=80) {
 fill("rgba(255, 250, 92, 1)");
 noStroke();
 circle(windowWidth-100,75,100);
+
+fill("rgba(255, 253, 253, 1)");
 
   textSize(20);
   text(hour() + ":" + minute() + ":" + second(),10, 250)
