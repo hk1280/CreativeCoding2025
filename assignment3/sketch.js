@@ -194,7 +194,7 @@ for (let y=buttonBottom+150; y<windowHeight-100; y+=50){
 // visualizes as two rows of orange static bubbles
 // executed by a two dimensional for loop below
 
-for (let x=buttonLeft-30; x<buttonRight+56; x+=50) { 
+for (let x=buttonLeft-20; x<buttonRight+50; x+=50) { 
 for (let y=buttonBottom+80; y<buttonBottom+110; y+=15){
  
     push();
