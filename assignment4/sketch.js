@@ -16,6 +16,23 @@ function draw() {
   }
   }
 
+  function keyPressed(){
+    let fish;
+    if (key == 's'){
+      type = 'salmon';
+    } else if (key == 't'){
+      type = 'tuna';
+    }
+
+    if (key == 's' || key == 't'){
+      let width = ["small", "medium", "large"];
+      let randomWidth = random(width);
+
+      let newSushi = new Sushi(x,y, randomWidth, fish);
+      sushi.push(newSushi);
+
+    }
+  }
 
 
 class Sushi {
@@ -24,6 +41,13 @@ class Sushi {
     this.y = y;
     this.width = width;
     this.fish = fish;
+    if (size == "small") {
+      this.width = 115;
+    } else if (size == "medium") {
+      this.width = 150;
+    } else if (size == "large") {
+      this.widrth = 200;
+    }
     }
 
     display() {
@@ -43,25 +67,23 @@ class Sushi {
       if (this.fish == "salmon") {
       fill("rgb(255, 172, 28)");
       
-      
-      fill("rgba(255, 227, 227, 1)");
-      rect(-40,10,8,55);
-      rect(-20,10,8,55);
-      rect(0,10,8,55);
-      rect(20,10,8,55);
-      rect(40,10,8,55);
+      // fill("rgba(255, 227, 227, 1)");
+      // rect(-40,10,8,55);
+      // rect(-20,10,8,55);
+      // rect(0,10,8,55);
+      // rect(20,10,8,55);
+      // rect(40,10,8,55);
       }
 
       else if (this.fish == "tuna") {  
-      // tuna for nigiri
       fill("rgb(207, 52, 67)");
-      rect(0,180,140,55,30);
-      fill("rgba(251, 189, 189, 1)");
-      rect(-40,180,8,55);
-      rect(-20,180,8,55);
-      rect(0,180,8,55);
-      rect(20,180,8,55);
-      rect(40,180,8,55);
+
+      // fill("rgba(251, 189, 189, 1)");
+      // rect(-40,180,8,55);
+      // rect(-20,180,8,55);
+      // rect(0,180,8,55);
+      // rect(20,180,8,55);
+      // rect(40,180,8,55);
 
 }
 pop();
