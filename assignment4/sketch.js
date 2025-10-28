@@ -1,51 +1,73 @@
-// sushi
+let mySushi;
 
-// nigiri
-
-// maki 
+let sushi = [];
 
 function setup() {
 createCanvas(windowWidth,windowHeight);
-background("rgba(74, 177, 255, 1)");
+
 
 }
 
 function draw() {
+  background("rgba(74, 177, 255, 1)");
 
-  translate(width/2, height/2);
-  rectMode(CENTER);
-
-  // rice for salmon nigiri
-  noStroke();
-  fill("rgba(255, 255, 255, 1)");
-  rect(0,30,115,30,10);
-  
-  // salmon for nigiri
-  fill("rgb(255, 172, 28)");
-  rect(0,10,140,55,30);
-  fill("rgba(255, 227, 227, 1)");
-  rect(-40,10,8,55);
-  rect(-20,10,8,55);
-  rect(0,10,8,55);
-  rect(20,10,8,55);
-  rect(40,10,8,55);
-
-    // rice for tuna nigiri
-  noStroke();
-  fill("rgba(255, 255, 255, 1)");
-  rect(0,200,115,30,10);
-  
-  // tuna for nigiri
-  fill("rgb(207, 52, 67)");
-  rect(0,180,140,55,30);
-  fill("rgba(251, 189, 189, 1)");
-  rect(-40,180,8,55);
-  rect(-20,180,8,55);
-  rect(0,180,8,55);
-  rect(20,180,8,55);
-  rect(40,180,8,55);
+  for (let i=0; i<sushi.length; i++){
+    sushi[i].display();
+  }
+  }
 
 
- 
+
+class Sushi {
+  constructor(x, y, width, fish) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.fish = fish;
+    }
+
+    display() {
+      push();
+      translate(this.x, this.y);
+      rectMode(CENTER);
+      noStroke();
+
+      // rect(0,30,115,30,10);
+      // rect(0,10,140,55,30);
+
+      // rice
+      fill("rgba(255, 255, 255, 1)");
+      rect(this.x,this.y,this.width,this.width*0.26,10);
+      rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
+
+      if (this.fish == "salmon") {
+      fill("rgb(255, 172, 28)");
+      
+      
+      fill("rgba(255, 227, 227, 1)");
+      rect(-40,10,8,55);
+      rect(-20,10,8,55);
+      rect(0,10,8,55);
+      rect(20,10,8,55);
+      rect(40,10,8,55);
+      }
+
+      else if (this.fish == "tuna") {  
+      // tuna for nigiri
+      fill("rgb(207, 52, 67)");
+      rect(0,180,140,55,30);
+      fill("rgba(251, 189, 189, 1)");
+      rect(-40,180,8,55);
+      rect(-20,180,8,55);
+      rect(0,180,8,55);
+      rect(20,180,8,55);
+      rect(40,180,8,55);
 
 }
+pop();
+
+
+      }
+    }
+
+
