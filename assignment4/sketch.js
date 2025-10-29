@@ -10,9 +10,10 @@ createCanvas(windowWidth,windowHeight);
 
 function draw() {
   background("rgba(74, 177, 255, 1)");
+  mySushi.drawSushi();
 
   for (let i=0; i<sushi.length; i++){
-    sushi[i].display();
+    sushi[i].drawSushi();
   }
   }
 
@@ -28,7 +29,7 @@ function draw() {
       let width = ["small", "medium", "large"];
       let randomWidth = random(width);
 
-      let newSushi = new Sushi(x,y, randomWidth, fish);
+      let mySushi = new Sushi(x,y, randomWidth, fish);
       sushi.push(newSushi);
 
     }
@@ -36,9 +37,9 @@ function draw() {
 
 
 class Sushi {
-  constructor(x, y, width, fish) {
-    this.x = x;
-    this.y = y;
+  constructor(size, width, fish) {
+    this.x = random(width);
+    this.y = random(height);
     this.width = width;
     this.fish = fish;
     if (size == "small") {
@@ -46,11 +47,11 @@ class Sushi {
     } else if (size == "medium") {
       this.width = 150;
     } else if (size == "large") {
-      this.widrth = 200;
+      this.width = 200;
     }
     }
 
-    display() {
+    drawSushi() {
       push();
       translate(this.x, this.y);
       rectMode(CENTER);
@@ -62,10 +63,11 @@ class Sushi {
       // rice
       fill("rgba(255, 255, 255, 1)");
       rect(this.x,this.y,this.width,this.width*0.26,10);
-      rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
+      // rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
 
       if (this.fish == "salmon") {
       fill("rgb(255, 172, 28)");
+      rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
       
       // fill("rgba(255, 227, 227, 1)");
       // rect(-40,10,8,55);
@@ -77,6 +79,7 @@ class Sushi {
 
       else if (this.fish == "tuna") {  
       fill("rgb(207, 52, 67)");
+      rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
 
       // fill("rgba(251, 189, 189, 1)");
       // rect(-40,180,8,55);
