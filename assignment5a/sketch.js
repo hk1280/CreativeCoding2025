@@ -26,15 +26,15 @@ function draw() {
 
   // drawing the heart
   beginShape();
-  curveVertex(heartXPos,150); // xPos changes the top of the heart smoothly left to right
+  curveVertex(heartXPos,150); // x pos changes the top of the heart smoothly left to right
   curveVertex(200,150);
   curveVertex(290,110);
-  curveVertex(340,200);
+  curveVertex(330,200);
   curveVertex(200,350);
-  curveVertex(60,200);
+  curveVertex(70,200);
   curveVertex(110,110);
   curveVertex(200,150);
-  curveVertex(200,heartYPos); // yPos changes up and down
+  curveVertex(200,heartYPos); // y pos changes up and down
   endShape();
 
   heartX+=heartSpeed; // movement
