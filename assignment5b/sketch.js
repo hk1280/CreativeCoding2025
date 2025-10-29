@@ -10,14 +10,25 @@ function draw() {
   fill("rgba(250, 132, 252, 1)");
   push();
 
-  let heartX = frameCount % width; 
-  // frameCount increases by 1 each frame
-  // loop it back to 0 when it reaches the width
-  // % gives the remainder
-  // 0 to 400, left to right
-  // 401 - starts again from the left side
 
-  translate(heartX-200, -20); // estimation of center
+  // heart width is 330 - 70 = 260
+  // half of width is 130
+  // has to travel 400 + 260 = 660
+  // half the heart is 130
+  // on the right side, has to travel
+  // 130 + 200 = 330
+
+
+  let heartX = frameCount % 660 - 330; 
+  // frameCount increases by 1 each frame
+  // loop it back to 0 when the left side
+  // of heart reaches the width
+  // have the right side of heart start
+  // from 0
+  // % gives the remainder
+
+
+  translate(heartX, -20); // estimation of center
   drawHeart();
   pop();
 
