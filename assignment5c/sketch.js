@@ -3,7 +3,7 @@
 
 let drunkHeartX = 200; // current x position
 let drunkHeartY = 200; // current y position
-let drunkHeartRange = 3; // range of movement
+let drunkHeartRange = 2; // range of movement
 let drunkHeartSize = 0.1; // size of heart
 
 
@@ -16,19 +16,22 @@ function setup() {
 function draw() {
   background("rgb(0,0,0)");  
 
-  drunkHeartX += random(-drunkHeartRange,drunkHeartRange); // adding random movement in the range
-  drunkHeartY += random(-drunkHeartRange,drunkHeartRange); // adding random movement in the range
+  
 
   push();
   translate(drunkHeartX, drunkHeartY);
   scale(drunkHeartSize); // scales the heart down
   fill("rgba(250, 132, 252, 1)");
   drawHeart();
+  drunkHeart();
   pop();
 
 }
 
-
+function drunkHeart() {
+  drunkHeartX += random(-drunkHeartRange,drunkHeartRange); // adding random movement in the range
+  drunkHeartY += random(-drunkHeartRange,drunkHeartRange); // adding random movement in the range
+}
 
 function drawHeart() {
 
