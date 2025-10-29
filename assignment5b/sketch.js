@@ -9,8 +9,15 @@ function draw() {
   background("rgb(0,0,0)");
   fill("rgba(250, 132, 252, 1)");
   push();
-  let heartX = frameCount%width;
-  translate(heartX-200, -25);
+
+  let heartX = frameCount%width; 
+  // frameCount increases by 1 each frame
+  // loop it back to 0 when it reaches the width
+  // % gives the remainder
+  // 0 to 400, left to right
+  // 401 - starts again from the left side
+
+  translate(heartX-200, -20);
   drawHeart();
   pop();
 
