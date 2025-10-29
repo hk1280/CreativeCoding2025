@@ -12,10 +12,9 @@ function draw() {
 
 
   // heart width is 330 - 70 = 260
-  // half of width is 130
   // has to travel 400 + 260 = 660
   // half the heart is 130
-  // on the right side, has to travel
+  // on each side, has to travel
   // 130 + 200 = 330
 
 
