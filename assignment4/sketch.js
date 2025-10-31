@@ -1,14 +1,17 @@
+// empty array to hold all sushi objects
 let sushi = [];
 
 function setup() {
 createCanvas(windowWidth,windowHeight);
 rectMode(CENTER);
 
-
 }
 
 function draw() {
   background("rgba(74, 177, 255, 1)");
+
+  // go through every element in my sushi array
+  // run the drawSushi function on each object
 
   for (let i=0; i<sushi.length; i++){
     sushi[i].drawSushi();
@@ -18,9 +21,9 @@ function draw() {
 function keyPressed(){
     let fish;
     if (key == 's'){
-      type = 'salmon';
+      fish = 'salmon';
     } else if (key == 't'){
-      type = 'tuna';
+      fish = 'tuna';
     }
 
     if (key == 's' || key == 't'){
@@ -38,12 +41,22 @@ class Sushi {
   constructor(size, fish) {
     this.sushiX = random(width);
     this.sushiY = random(height);
+    this.fishHeight = 0.34;
+    this.fishWidth = 1.2;
+    this.offset = 0.13; 
+    // affects the y pos b/c multiply to the x pos
+    // to see where the fish sits on the rice
+
+    // pick width by size
     if (size == "small") {
-      this.width = 115;
+      this.width = 110; // width of rice
+      this.rice = 0.24; // multiply to the width to give height of rice
     } else if (size == "medium") {
-      this.width = 150
+      this.width = 140;
+      this.rice = 0.26;
     } else if (size == "large") {
-      this.width = 200
+      this.width = 180; 
+      this.rice = 0.28;
     }
     this.fish = fish;
 
@@ -52,41 +65,20 @@ class Sushi {
     drawSushi() {
       push();
       translate(this.sushiX, this.sushiY);
-      rectMode(CENTER);
       noStroke();
-
-      // rect(0,30,115,30,10);
-      // rect(0,10,140,55,30);
 
       // rice
       fill("rgba(255, 255, 255, 1)");
-      rect(this.sushiX,this.sushiY,this.width,this.width*0.26,10);
-      // rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
+      rect(0,0,this.width,this.width*this.rice,10);
 
       if (this.fish == "salmon") {
       fill("rgb(255, 172, 28)");
-      rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
-      
-      // fill("rgba(255, 227, 227, 1)");
-      // rect(-40,10,8,55);
-      // rect(-20,10,8,55);
-      // rect(0,10,8,55);
-      // rect(20,10,8,55);
-      // rect(40,10,8,55);
-      }
-
-      else if (this.fish == "tuna") {  
+      } else if (this.fish == "tuna") {  
       fill("rgb(207, 52, 67)");
-      rect(this.x, this.y-20,this.width*1.22,0.48*this.width,30)
-
-      // fill("rgba(251, 189, 189, 1)");
-      // rect(-40,180,8,55);
-      // rect(-20,180,8,55);
-      // rect(0,180,8,55);
-      // rect(20,180,8,55);
-      // rect(40,180,8,55);
 
 }
+
+rect (0, -this.width*this.offset, this.width*this.fishWidth, this.width*this.fishHeight, 30);
 pop();
 
 
