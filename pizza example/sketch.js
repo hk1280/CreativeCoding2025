@@ -10,19 +10,28 @@
 
 // let numberOfIngredients = 20;
 
-let myPizza;
+// let myPizza;
+
+let myPizzas = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  myPizza = new Pizza(width/2,height/2,250,15);
+  // myPizzas = new Pizza(width/2,height/2,250,15);
 
 }
 
 function draw() {
 
   background(100);
-  myPizza.display();
-  
+
+  for (let i=0; i<myPizzas.length; i++){
+    myPizzas[i].display();
+    }
+}
+
+function mousePressed(){
+  let tempPizza = new Pizza(mouseX, mouseY,random(200,400),random(20));
+  myPizzas.push(tempPizza);
 }
 
 class Pizza {
@@ -63,6 +72,8 @@ display(){
   translate(this.x,this.y);
   circle(0,0,this.diameter+40); // crust
   circle(0,0,this.diameter); // cheese
+
+  fill('red');
 
   for (let i=0; i<this.numberOfIngredients; i++){
     circle(this.ingredientPositions[i].x,this.ingredientPositions[i].y,20);
