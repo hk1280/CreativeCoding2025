@@ -30,69 +30,50 @@ function draw() {
   // Draw the webcam video
   image(video, 0, 0, width, height);
 
-  if (faces.length>0){ // check if face detected
+  if(faces.length>0){ // check if face detected...
     let leftEye = faces[0].leftEye.keypoints;
     let rightEye = faces[0].rightEye.keypoints;
-
+    let mouth = faces[0].lips.keypoints;
+    fill(0,255,0);
     // draw left eye
-
     beginShape();
-    
-    for (let i=0; i<8; i++) {
-      vertex(leftEye[i].x, leftEye[i].y);
-    
+    for(let i = 0; i<8;i++){
+      vertex(leftEye[i].x,leftEye[i].y);
     }
-
-    for (let i = 16; i>7; i--) {
-      fill(255);
-      vertex(i,leftEye[i].x,leftEye[i].y);
-
+    for(let i = 16;i>7;i--){
+      vertex(leftEye[i].x,leftEye[i].y);
     }
-
     endShape();
 
     // draw right eye
-
-    beginShape();
-    
-    for (let i=0; i<8; i++) {
-      vertex(rightEye[i].x, rightEye[i].y);
-    
+        beginShape();
+    for(let i = 0; i<8;i++){
+      vertex(rightEye[i].x,rightEye[i].y);
     }
-
-    for (let i = 16; i>7; i--) {
-      fill(255);
-      vertex(i,rightEye[i].x,rightEye[i].y);
-
+    for(let i = 16;i>7;i--){
+      vertex(rightEye[i].x,rightEye[i].y);
     }
-
     endShape();
 
     beginShape();
-
-    for (let i=0;i < 10; i++) {
-      // text(i,mouth[i].x,mouth[i].y);
-      vertex(mouth[i].x, mouth[i].y);
-
-        }
-
-        for (let i=0;i < 10; i++) {
-      // text(i,mouth[i].x,mouth[i].y);
-      vertex(mouth[i].x, mouth[i].y);
-
-        }
-        endShape();
-
+    for(let i = 0; i<10;i++){
+      //text(i,mouth[i].x,mouth[i].y);
+      vertex(mouth[i].x,mouth[i].y);
+    }
+    for(let i = 20; i>9;i--){
+      vertex(mouth[i].x,mouth[i].y);
+    }
+    endShape();
   }
 
-  // // Draw all the tracked face points
+  // Draw all the tracked face points
   // for (let i = 0; i < faces.length; i++) {
   //   let face = faces[i];
   //   for (let j = 0; j < face.keypoints.length; j++) {
   //     let keypoint = face.keypoints[j];
   //     fill(0, 255, 0);
   //     noStroke();
-  //     circle(keypoint.x, keypoint.y, 5);
+  //     text(j,keypoint.x, keypoint.y);
   //   }
   // }
 }
@@ -101,4 +82,10 @@ function draw() {
 function gotFaces(results) {
   // Save the output to the faces variable
   faces = results;
+}
+
+function mousePressed(){
+  if(faces.length>0){
+    console.log(faces[0]);
+  }
 }
