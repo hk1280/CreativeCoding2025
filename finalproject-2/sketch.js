@@ -29,9 +29,7 @@ function setup() {
 function draw() {
   // Draw the webcam video
   image(video, 0, 0, width, height);
-
-
-
+  
   if (faces.length>0){
     let upperLip = faces[0].keypoints[13];
     let bottomLip = faces[0].keypoints[14];
@@ -42,11 +40,15 @@ function draw() {
     noStroke();
     circle(upperLip.x, upperLip.y, 10);
     circle(bottomLip.x, bottomLip.y, 10);
-    circle(leftLip.x, rightLip.y, 10);
+    circle(leftLip.x, leftLip.y, 10);
     circle(rightLip.x, rightLip.y, 10);
 
     let verticalDist = dist(upperLip.x, upperLip.y, bottomLip.x, bottomLip.y);
     let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
+    let mouthRatio = verticalDist / horizontalDist;
+
+    fill("rgba(120, 49, 49, 1)");
+
 
   }
 
