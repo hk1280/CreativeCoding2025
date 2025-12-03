@@ -30,18 +30,26 @@ function draw() {
   // Draw the webcam video
   image(video, 0, 0, width, height);
 
+
+
   if (faces.length>0){
-    let upperLip = faces[0].upperLip.keypoints;
-    let bottomLip = faces[0].bottomLip.keypoints;
-    let leftLip = faces[0].leftLip.keypoints;
-    let rightLip = faces[0].rightLip.keypoints;
+    let upperLip = faces[0].keypoints[13];
+    let bottomLip = faces[0].keypoints[14];
+    let leftLip = faces[0].keypoints[61];
+    let rightLip = faces[0].keypoints[291];
+
+    fill("rgb(0,0,0)");
+    noStroke();
+    circle(upperLip.x, upperLip.y, 10);
+    circle(bottomLip.x, bottomLip.y, 10);
+    circle(leftLip.x, rightLip.y, 10);
+    circle(rightLip.x, rightLip.y, 10);
+
+    let verticalDist = dist(upperLip.x, upperLip.y, bottomLip.x, bottomLip.y);
+    let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
 
   }
 
-  let verticalDist = dist(upperLip.x,upperLip.y,bottomLip.x,bottomLip.y);
-  let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
-
-  let mouthRatio = verticalDist / horizontalDist;
 
 
 
@@ -64,3 +72,10 @@ function gotFaces(results) {
   faces = results;
 }
 
+
+function mousePressed(){
+  if (faces.length>0) {
+  let mouth = faces[0].lips.keypoints;
+  console.log(mouth);
+  }
+}
