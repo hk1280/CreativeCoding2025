@@ -60,3 +60,9 @@ function gotFaces(results) {
   // Save the output to the faces variable
   faces = results;
 }
+
+
+function mousePressed(){
+  if(faces.length>0){
+    console.log(faces[0]);
+  }}
