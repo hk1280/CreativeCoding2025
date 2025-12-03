@@ -110,6 +110,7 @@ function draw() {
 
 function drawCircle(phase) {
 
+  // setting the size of the circle based on phase
   let targetRadius;
   if (phase == 'INHALE') {
     targetRadius = 60;
@@ -117,8 +118,11 @@ function drawCircle(phase) {
     targetRadius = 120;
   }
 
+  // smooth transition b/w sizes
+  // lerp(start,stop,amt)
   circleRadius = lerp(circleRadius, targetRadius, 0.05);
 
+  // setting the speed based on phase
   let noiseSpeed;
   if (phase == 'INHALE') {
     noiseSpeed = 0.002;
@@ -130,19 +134,24 @@ function drawCircle(phase) {
 
   beginShape();
 
+  // drawing the circle
+  // each loop iteration places one point on the circle
+  // smaller the incrementation, the smoother it is
+
   for (let i=0; i<TWO_PI; i+=0.1) {
-    let wiggle = noise(cos(i) + sin(i), noisePosition) * 20;
+
+    // noise(x, y, z)
+    // returns a value b/w 0 and 1
+    let wiggle = noise(cos(i), sin(i), noisePosition) * 20;
     let radiusWiggle = circleRadius + wiggle;
 
-    let x = width/2 +cos(i) * radiusWiggle;
+    let x = width/2 + cos(i) * radiusWiggle;
     let y = height/2 + sin(i) * radiusWiggle;
 
     vertex(x,y);
 
   }
   endShape(CLOSE);
-
-  
 
 }
 
@@ -152,7 +161,6 @@ function gotFaces(results) {
   // Save the output to the faces variable
   faces = results;
 }
-
 
 function mousePressed(){
   if (faces.length>0) {
