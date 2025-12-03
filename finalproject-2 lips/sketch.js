@@ -3,7 +3,7 @@
  * Learn more about the ml5.js project: https://ml5js.org/
  * ml5.js license and Code of Conduct: https://github.com/ml5js/ml5-next-gen/blob/main/LICENSE.md
  *
- * This example demonstrates face tracking on live video through ml5.faceMesh.
+ * This example demonstrates tracking a particular face feature through ml5.faceMesh.
  */
 
 let faceMesh;
@@ -30,32 +30,29 @@ function draw() {
   // Draw the webcam video
   image(video, 0, 0, width, height);
 
-  if (faces.length>0){
-    let upperLip = faces[0].upperLip.keypoints;
-    let bottomLip = faces[0].bottomLip.keypoints;
-    let leftLip = faces[0].leftLip.keypoints;
-    let rightLip = faces[0].rightLip.keypoints;
-
+  if (faces.length > 0 && faces[0].lips) {
+    fill(0, 255, 0);
+    rect(
+      faces[0].lips.x,
+      faces[0].lips.y,
+      faces[0].lips.width,
+      faces[0].lips.height
+    );
   }
 
-  let verticalDist = dist(upperLip.x,upperLip.y,bottomLip.x,bottomLip.y);
-  let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
+  drawPartsKeypoints();
+}
 
-  let mouthRatio = verticalDist / horizontalDist;
-
-
-
-
-  // // Draw all the tracked face points with the number
-  // for (let i = 0; i < faces.length; i++) {
-  //   let face = faces[i];
-  //   for (let j = 0; j < face.keypoints.length; j++) {
-  //     let keypoint = face.keypoints[j];
-  //     fill(0, 255, 0);
-  //     noStroke();
-  //     text(j,keypoint.x, keypoint.y);
-  //   }
-  // }
+// Draw keypoints for specific face element positions
+function drawPartsKeypoints() {
+  // If there is at least one face
+  if (faces.length > 0) {
+    for (let i = 0; i < faces[0].lips.keypoints.length; i++) {
+      let lips = faces[0].lips.keypoints[i];
+      fill(0, 255, 0);
+      circle(lips.x, lips.y, 5);
+    }
+  }
 }
 
 // Callback function for when faceMesh outputs data
@@ -63,4 +60,3 @@ function gotFaces(results) {
   // Save the output to the faces variable
   faces = results;
 }
-
