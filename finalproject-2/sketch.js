@@ -92,7 +92,9 @@ function draw() {
     } else if (phase == 'EXHALE') {
       text("You are exhaling", 10, 50);
     }
+     drawCircle(phase);
   }
+ 
 
   // // Draw all the tracked face points with the number
   // for (let i = 0; i < faces.length; i++) {
@@ -105,6 +107,45 @@ function draw() {
   //   }
   // }
 }
+
+function drawCircle(phase) {
+
+  let targetRadius;
+  if (phase == 'INHALE') {
+    targetRadius = 60;
+  } else if (phase == 'EXHALE') {
+    targetRadius = 120;
+  }
+
+  circleRadius = lerp(circleRadius, targetRadius, 0.05);
+
+  let noiseSpeed;
+  if (phase == 'INHALE') {
+    noiseSpeed = 0.002;
+  } else if (phase == 'EXHALE'){
+    noiseSpeed = 0.006;
+  }
+  
+  noisePosition = noisePosition + noiseSpeed;
+
+  beginShape();
+
+  for (let i=0; i<TWO_PI; i+=0.1) {
+    let wiggle = noise(cos(i) + sin(i), noisePosition) * 20;
+    let radiusWiggle = circleRadius + wiggle;
+
+    let x = width/2 +cos(i) * radiusWiggle;
+    let y = height/2 + sin(i) * radiusWiggle;
+
+    vertex(x,y);
+
+  }
+  endShape(CLOSE);
+
+  
+
+}
+
 
 // Callback function for when faceMesh outputs data
 function gotFaces(results) {
