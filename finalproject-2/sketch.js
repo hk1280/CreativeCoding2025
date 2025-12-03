@@ -11,6 +11,9 @@ let video;
 let faces = [];
 let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
 
+let circleRadius = 80;
+let noisePosition = 0;
+
 function preload() {
   // Load the faceMesh model
   faceMesh = ml5.faceMesh(options);
@@ -62,11 +65,10 @@ function draw() {
     // from the camera
     let mouthRatio = verticalDist / horizontalDist;
 
-
     // text box in corner stating mouth ratio
-    fill("rgba(248, 139, 139, 1)");
+    fill("rgba(146, 170, 221, 1)");
     rect(0, height-30, 220, 30);
-    fill(255);
+    fill("rgba(255, 255, 255, 1)");
     textSize(14);
     textAlign(LEFT, CENTER);
 
@@ -75,11 +77,19 @@ function draw() {
     // gives you 3 decimal points below
     text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-15);
 
-    textSize(32);
-
+    let phase;
     if (mouthRatio < 0.08) {
-      text("You are inhaling", 10, 50);
+      phase = 'INHALE';
     } else if (mouthRatio > 0.08) {
+      phase = 'EXHALE';
+    }
+
+    textSize(32);
+    fill("rgba(255, 255, 255, 1)");
+
+    if (phase == 'INHALE') {
+      text("You are inhaling", 10, 50);
+    } else if (phase == 'EXHALE') {
       text("You are exhaling", 10, 50);
     }
   }
