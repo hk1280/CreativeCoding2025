@@ -57,10 +57,6 @@ function draw() {
 
   }
 
-
-
-
-
   // // Draw all the tracked face points with the number
   // for (let i = 0; i < faces.length; i++) {
   //   let face = faces[i];
