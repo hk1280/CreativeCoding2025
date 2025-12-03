@@ -43,16 +43,31 @@ function draw() {
     circle(leftLip.x, leftLip.y, 10);
     circle(rightLip.x, rightLip.y, 10);
 
-    // let verticalDist = dist(upperLip.x, upperLip.y, bottomLip.x, bottomLip.y);
-    // let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
-    // let mouthRatio = verticalDist / horizontalDist;
 
-    // fill("rgba(120, 49, 49, 1)");
-    // rect(0, height-30, 220, 30);
-    // fill(255);
-    // textSize(14);
-    // textAlign(LEFT, CENTER);
-    // text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-15);
+    // distance between upperlip and bottomLip
+    // when there is small distance b/w the lips (closed),
+    // you are inhaling through the nose
+    // where there is bigger distance (open),
+    // you are exhaling through the mouth
+    let verticalDist = dist(upperLip.x, upperLip.y, bottomLip.x, bottomLip.y);
+    
+    // distance between the corners of the lips
+    // when there is big distance b/w the corners
+    // you are inhaling through the nose
+    // when there is small distance b/w the corners of your lips
+    // you are exhaling through the mouth
+    let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
+    
+    // ratio is consistent no matter how far you away you are
+    // from the camera
+    let mouthRatio = verticalDist / horizontalDist;
+
+    fill("rgba(120, 49, 49, 1)");
+    rect(0, height-30, 220, 30);
+    fill(255);
+    textSize(14);
+    textAlign(LEFT, CENTER);
+    text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-15);
 
 
   }
