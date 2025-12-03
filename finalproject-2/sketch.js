@@ -69,13 +69,19 @@ function draw() {
     fill(255);
     textSize(14);
     textAlign(LEFT, CENTER);
-    
+
     // toFixed is a javascript method that is part of the
     // Number.prototype object
     // gives you 3 decimal points below
     text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-15);
 
+    textSize(32);
 
+    if (mouthRatio < 0.08) {
+      text("You are inhaling", 10, 50);
+    } else if (mouthRatio > 0.08) {
+      text("You are exhaling", 10, 50);
+    }
   }
 
   // // Draw all the tracked face points with the number
