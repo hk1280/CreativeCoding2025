@@ -43,11 +43,16 @@ function draw() {
     circle(leftLip.x, leftLip.y, 10);
     circle(rightLip.x, rightLip.y, 10);
 
-    let verticalDist = dist(upperLip.x, upperLip.y, bottomLip.x, bottomLip.y);
-    let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
-    let mouthRatio = verticalDist / horizontalDist;
+    // let verticalDist = dist(upperLip.x, upperLip.y, bottomLip.x, bottomLip.y);
+    // let horizontalDist = dist(leftLip.x, leftLip.y, rightLip.x, rightLip.y);
+    // let mouthRatio = verticalDist / horizontalDist;
 
-    fill("rgba(120, 49, 49, 1)");
+    // fill("rgba(120, 49, 49, 1)");
+    // rect(0, height-30, 220, 30);
+    // fill(255);
+    // textSize(14);
+    // textAlign(LEFT, CENTER);
+    // text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-15);
 
 
   }
