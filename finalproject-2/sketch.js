@@ -62,11 +62,17 @@ function draw() {
     // from the camera
     let mouthRatio = verticalDist / horizontalDist;
 
-    fill("rgba(120, 49, 49, 1)");
+
+    // text box in corner stating mouth ratio
+    fill("rgba(248, 139, 139, 1)");
     rect(0, height-30, 220, 30);
     fill(255);
     textSize(14);
     textAlign(LEFT, CENTER);
+    
+    // toFixed is a javascript method that is part of the
+    // Number.prototype object
+    // gives you 3 decimal points below
     text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-15);
 
 
