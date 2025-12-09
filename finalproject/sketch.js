@@ -46,7 +46,6 @@ function draw() {
     circle(leftLip.x, leftLip.y, 10);
     circle(rightLip.x, rightLip.y, 10);
 
-
     // distance between upperlip and bottomLip
     // when there is small distance b/w the lips (closed),
     // you are inhaling through the nose
