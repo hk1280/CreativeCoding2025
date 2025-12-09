@@ -58,7 +58,7 @@ function draw() {
   let elapsed = millis()-pMillis;
 
   if(elapsed>totalDuration){
-    pMillis = millis(); //reset timer after interval
+    pMillis = millis(); // reset timer after interval
     elapsed = 0; // reset elapsed
   }
 
@@ -127,6 +127,8 @@ function draw() {
     // from the camera
     let mouthRatio = verticalDist / horizontalDist;
 
+    // what the camera detects the user is doing
+
     let detectedPhase;
 
     if (mouthRatio < 0.08) {
@@ -153,12 +155,14 @@ function draw() {
   if (faces.length == 0) {
     // stroke("rgba(0,0,0,0.5)");
     fill("rgba(214, 162, 246, 0.5)");
+
     // if you're in sync then green
   } else if (inSync) {
     // stroke("rgba(0,0,0,0.5)");
     fill("rgba(161, 252, 185, 0.5)");
+
   } else {
-    // not in sync then blue
+    // not in sync then red
     // stroke("rgba(0,0,0,0.5)");
     fill("rgba(251, 125, 125, 0.5)");
   }
@@ -166,7 +170,9 @@ function draw() {
   // strokeWeight(3);
   circle(width/2, height/2, circleRadius*2);
 
+  // setting the instructions for the guided breathing
   textSize(28);
+
   let instructionText = '';
   if (guidePhase == 'INHALE') {
     instructionText = "Breathe in slowly";
@@ -182,11 +188,11 @@ function draw() {
   textSize(16);
   text("Guide phase: " + guidePhase, 10, 10);
 
-  if (faces.length >0) {
+  if (faces.length > 0) {
     text("Detected phase: " + detectedPhase, 10, 30);
     text("mouthRatio: " + mouthRatio.toFixed(3), 10, 50);
   } else {
-    text("No face detected",10, 70);
+    text("No face detected", 10, 70);
 
   }
   // // Draw all the tracked face points with the number
