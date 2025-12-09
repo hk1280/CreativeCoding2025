@@ -16,9 +16,13 @@ let holdDuration = 4000;
 let exhaleDuration = 4000;
 let totalDuration;
 
+// stores the time in milliseconds when the current breathing cycle started
+
 let pMillis = 0;
 
+// current radius
 let circleRadius = 80;
+
 let circleMin = 80;
 let circleMax = 180;
 
@@ -30,6 +34,9 @@ function preload() {
 
 function setup() {
   createCanvas(640, 480);
+
+  // total duration of one full breathing cycle in ms
+  // 12 seconds (12,000 ms)
 
   totalDuration = inhaleDuration + holdDuration + exhaleDuration;
 
@@ -45,6 +52,9 @@ function draw() {
   // Draw the webcam video
   image(video, 0, 0, width, height);
 
+  // millis() gives the time in ms since the sketch started
+  // elapsed is how much time has passed since the current breathing cycle began
+
   let elapsed = millis()-pMillis;
 
   if(elapsed>totalDuration){
@@ -52,9 +62,9 @@ function draw() {
     elapsed = 0; // reset elapsed
   }
 
-  let guidePhase;
-  let phaseTime;
-
+  let guidePhase; // setting the different phases of inhale, hold, exhale
+  let phaseTime; // fraction to tell us how far we are into that phase
+  
   if (elapsed < inhaleDuration) {
     guidePhase = 'INHALE';
     phaseTime = elapsed / inhaleDuration;
@@ -71,16 +81,21 @@ function draw() {
   let targetRadius;
 
   if (guidePhase == 'INHALE') {
-    targetRadius = lerp(circleMin, circleMax, phaseTime);
+    // from small to big
+    targetRadius = lerp(circleMin, circleMax, phaseTime); 
   } else if (guidePhase == 'HOLD') {
+    // keep at maximum size
     targetRadius = circleMax;
   } else if (guidePhase == 'EXHALE') {
+    // from big to small
     targetRadius = lerp(circleMax, circleMin, phaseTime);
   }
 
+  // smoothly change the circle radius to target radius
   circleRadius = lerp(circleRadius, targetRadius, 0.1);
 
-  
+  // if we have a face detected
+
   if (faces.length>0){
     let upperLip = faces[0].keypoints[13];
     let bottomLip = faces[0].keypoints[14];
@@ -89,10 +104,10 @@ function draw() {
 
     fill("rgb(0,0,0)");
     noStroke();
-    circle(upperLip.x, upperLip.y, 10);
-    circle(bottomLip.x, bottomLip.y, 10);
-    circle(leftLip.x, leftLip.y, 10);
-    circle(rightLip.x, rightLip.y, 10);
+    circle(upperLip.x, upperLip.y, 8);
+    circle(bottomLip.x, bottomLip.y, 8);
+    circle(leftLip.x, leftLip.y, 8);
+    circle(rightLip.x, rightLip.y, 8);
 
     // distance between upperlip and bottomLip
     // when there is small distance b/w the lips (closed),
@@ -112,18 +127,6 @@ function draw() {
     // from the camera
     let mouthRatio = verticalDist / horizontalDist;
 
-    // text box in corner stating mouth ratio
-    // fill("rgba(146, 170, 221, 1)");
-    // rect(0, height-30, 220, 30);
-    // fill("rgba(255, 255, 255, 1)");
-    // textSize(14);
-    // textAlign(LEFT, CENTER);
-
-    // toFixed is a javascript method that is part of the
-    // Number.prototype object
-    // gives you 3 decimal points below
-    // text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-15);
-
     let detectedPhase;
 
     if (mouthRatio < 0.08) {
@@ -132,10 +135,11 @@ function draw() {
       detectedPhase = 'EXHALE';
     }
 
+    // boolean to see if the user is in sync with the guided breathing
+
     let inSync = false;
 
     
-
     textSize(32);
     fill("rgba(255, 255, 255, 1)");
 
@@ -145,18 +149,21 @@ function draw() {
     if (detectedPhase == 'EXHALE') inSync = true;
   }
 
+  // if no face is detected then purple
   if (faces.length == 0) {
-    stroke("rgb(0,0,0)");
-    fill("rgba(214, 162, 246, 1)");
+    // stroke("rgba(0,0,0,0.5)");
+    fill("rgba(214, 162, 246, 0.5)");
+    // if you're in sync then green
   } else if (inSync) {
-    stroke("rgb(0,0,0)");
-    fill("rgba(161, 252, 185, 1)");
+    // stroke("rgba(0,0,0,0.5)");
+    fill("rgba(161, 252, 185, 0.5)");
   } else {
-    stroke("rgb(0,0,0)");
-    fill("rgba(157, 201, 255, 1)");
+    // not in sync then blue
+    // stroke("rgba(0,0,0,0.5)");
+    fill("rgba(251, 125, 125, 0.5)");
   }
  
-  strokeWeight(3);
+  // strokeWeight(3);
   circle(width/2, height/2, circleRadius*2);
 
   textSize(28);
@@ -176,10 +183,10 @@ function draw() {
   text("Guide phase: " + guidePhase, 10, 10);
 
   if (faces.length >0) {
-    text("Detected phase: " + detectedPhase, 10, height-40);
-    text("mouthRatio: " + mouthRatio.toFixed(3), 10, height-20);
+    text("Detected phase: " + detectedPhase, 10, 30);
+    text("mouthRatio: " + mouthRatio.toFixed(3), 10, 50);
   } else {
-    text("No face detected",10,height-30);
+    text("No face detected",10, 70);
 
   }
   // // Draw all the tracked face points with the number
@@ -195,52 +202,6 @@ function draw() {
 }
 }
 
-// function drawCircle(phase) {
-
-//   // setting the size of the circle based on phase
-//   let targetRadius;
-//   if (phase == 'INHALE') {
-//     targetRadius = 60;
-//   } else if (phase == 'EXHALE') {
-//     targetRadius = 120;
-//   }
-
-//   // smooth transition b/w sizes
-//   // lerp(start,stop,amt)
-//   circleRadius = lerp(circleRadius, targetRadius, 0.05);
-
-//   // setting the speed based on phase
-//   let noiseSpeed;
-//   if (phase == 'INHALE') {
-//     noiseSpeed = 0.002;
-//   } else if (phase == 'EXHALE'){
-//     noiseSpeed = 0.006;
-//   }
-  
-//   noisePosition = noisePosition + noiseSpeed;
-
-//   beginShape();
-
-//   // drawing the circle
-//   // each loop iteration places one point on the circle
-//   // smaller the incrementation, the smoother it is
-
-//   for (let i=0; i<TWO_PI; i+=0.1) {
-
-//     // noise(x, y, z)
-//     // returns a value b/w 0 and 1
-//     let wiggle = noise(cos(i), sin(i), noisePosition) * 20;
-//     let radiusWiggle = circleRadius + wiggle;
-
-//     let x = width/2 + cos(i) * radiusWiggle;
-//     let y = height/2 + sin(i) * radiusWiggle;
-
-//     vertex(x,y);
-
-//   }
-//   endShape(CLOSE);
-
-// }
 
 
 // Callback function for when faceMesh outputs data
