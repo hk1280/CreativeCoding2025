@@ -25,6 +25,7 @@ let circleRadius = 80;
 let circleMin = 80;
 let circleMax = 180;
 
+// setting the 2 different screens, intro & breathing
 let currentScreen = 'intro';
 
 
@@ -184,7 +185,6 @@ function draw() {
   textAlign(CENTER, TOP);
   fill("rgba(255, 255, 255, 1)");
 
-
   let instructionText = '';
   if (guidePhase == 'INHALE') {
     instructionText = "Breathe in slowly";
@@ -201,6 +201,9 @@ function draw() {
   textSize(16);
   text("Guide phase: " + guidePhase, 10, 10);
 
+  // if a face is detected then the phase it detects you in
+  // or if it's not detected
+
   if (faces.length > 0) {
     text("Detected phase: " + detectedPhase, 10, 30);
     text("mouthRatio: " + mouthRatio.toFixed(3), 10, 50);
@@ -208,34 +211,24 @@ function draw() {
     text("No face detected", 10, 70);
 
   }
-  // // Draw all the tracked face points with the number
-  // for (let i = 0; i < faces.length; i++) {
-  //   let face = faces[i];
-  //   for (let j = 0; j < face.keypoints.length; j++) {
-  //     let keypoint = face.keypoints[j];
-  //     fill(0, 255, 0);
-  //     noStroke();
-  //     text(j,keypoint.x, keypoint.y);
-  //   }
-  // }
+  
 }
 }
-
-// intro screen
 
 // drawing the intro screen
+
 function drawIntroScreen() {
-  background("rgba(56, 45, 174, 1)");
+  background("rgba(200, 212, 244, 1)");
 
   // title
   textAlign(CENTER, TOP);
-  fill(255);
+  fill("rgb(0,0,0)");
   textSize(32);
-  text("Guided Breathing", width/2, 40);
+  text("The Breathing Room", width/2, 40);
 
   // instructions
   textSize(16);
-  let instructions = 'This project uses your webcam and face tracking\n to detect how you breathe and guide you through\na simple box breathing exercise.\nSit comfortably and look at the screen\nMake sure your face is visible to the camera\nFollow the circle and the text instructions.'
+  let instructions = 'This project uses your webcam and face tracking\n to guide you through a simple box breathing exercise.\nSit comfortably and look at the screen\nMake sure your face is visible to the camera\nFollow the circle and the text instructions.'
 
   text(instructions, width/2, 110);
 
@@ -250,7 +243,7 @@ function drawIntroScreen() {
   noStroke();
   rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
 
-  fill(0);
+  fill("rgba(255, 255, 255, 1)");
   textSize(20);
   text('Start Breathing', width/2, buttonY+buttonHeight/2-5);
 
