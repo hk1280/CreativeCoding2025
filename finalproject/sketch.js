@@ -35,6 +35,11 @@ let noiseSpeed = 0.01;
 let noisePosition = 0;
 let startingPoint = 0;
 
+// setting the timer
+let sessionStart = 0;
+
+// setting the total seconds for the closing page
+let totalSeconds = 0;
 
 function preload() {
   // Load the faceMesh model
@@ -212,6 +217,19 @@ function draw() {
 
   text(instructionText, width/2, 20);
 
+  // gives elapsed time since the breathing session started
+  // sessionstart was declared above as a global variable
+  let sessionTime = millis() - sessionStart; 
+
+  // dividing by 1000 to get seconds
+  // the floor rounds down to the nearest whole number
+  let seconds = floor(sessionTime/1000);
+
+  textAlign(RIGHT, TOP);
+  textSize(18);
+  fill("rgb(47, 62, 70)");
+  text('Timer: ' + seconds + 'secs', width-20, height - 60);
+
 
   textAlign(LEFT, TOP);
   textSize(16);
@@ -230,7 +248,7 @@ function draw() {
   let endButtonWidth = 180;
   let endButtonHeight = 40;
   let endButtonX = width/2 - endButtonWidth/2;
-  let endButtonY = height - 60;
+  let endButtonY = height - 50;
 
   fill("rgb(207,245,231)");
   noStroke();
@@ -335,13 +353,17 @@ fill("rgb(47, 62, 70)");
 textSize(32);
 text('Thank You for Breathing', width/2, 40);
 
-textSize(16);
+textSize(18);
 fill("rgb(47, 62, 70)");
 let closingText = 'You have completed this breathing session.\n'
 + 'Take a moment to notice how your body feels now.\n'
 + 'Carry this calm with you into the rest of your day.'
 
 text(closingText, width/2, 120);
+
+// added in a timer
+textSize(20);
+text('You spent ' + totalSeconds + ' seconds mindfully breathing.', width/2, 300);
 }
 
 // Callback function for when faceMesh outputs data
@@ -368,7 +390,9 @@ function mousePressed() {
     if (mouseX > buttonX && mouseX < buttonX + buttonWidth && 
       mouseY > buttonY && mouseY < buttonY + buttonHeight) {
         currentScreen = 'breathe';
-        pMillis = millis();
+        let now = millis(); // variable to hold the milliseconds
+        pMillis = now; // this is for the breathing excercise timer
+        sessionStart = now; // overall session timer 
       }
   } else if (currentScreen == 'breathe') {
   
@@ -376,10 +400,12 @@ function mousePressed() {
   let endButtonWidth = 180;
   let endButtonHeight = 40;
   let endButtonX = width/2 - endButtonWidth/2;
-  let endButtonY = height - 60;
+  let endButtonY = height - 50;
   
   if (mouseX > endButtonX && mouseX < endButtonX + endButtonWidth &&
     mouseY > endButtonY && mouseY < endButtonY+endButtonHeight){
+      let sessionTime = millis() - sessionStart;
+      totalSeconds = floor(sessionTime/1000);
       currentScreen = 'end';
     } else {
   if (faces.length>0) {
