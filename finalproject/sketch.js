@@ -30,6 +30,11 @@ let circleMax = 180;
 // the breathe page - the breathing exercise
 let currentScreen = 'intro';
 
+// perlin noise
+let noiseSpeed = 0.01;
+let noisePosition = 0;
+let startingPoint = 0;
+
 
 function preload() {
   // Load the faceMesh model
@@ -242,12 +247,19 @@ function draw() {
 
 function drawIntroScreen() {
   background("rgba(176, 205, 225, 1)");
+  
+  // perlin noise animation
+  drawNoise();
+
 
   // title "The Breathing Room"
   textAlign(CENTER, TOP);
+  noStroke();
   fill("rgb(47, 62, 70)");
   textSize(32);
   text("The Breathing Room", width/2, 40);
+
+
 
   // instructions
   textSize(16);
@@ -275,7 +287,38 @@ function drawIntroScreen() {
   fill("rgba(47, 62, 70, 1)");
   textSize(20);
   text('Begin Session', width/2, buttonY+buttonHeight/2-8);
+
+
 }
+
+// draw perlin noise on intro screen
+
+function drawNoise() {
+
+  noisePosition = startingPoint;
+  stroke("rgb(253, 246, 201)");
+  strokeWeight(2);
+  noFill();
+
+  beginShape();
+  let circleX, circleY;
+  for (let i=0; i<width; i++) {
+    let yPos = noise(noisePosition) * 80 - 40 + height-50;
+    vertex(i, yPos);
+    noisePosition = noisePosition + noiseSpeed;
+    if (i == width/2) {
+      circleX = i;
+      circleY = yPos;
+    }
+  }
+  endShape();
+  fill("rgb(253, 246, 201)");
+  circle(circleX, circleY, 10);
+  startingPoint = startingPoint + noiseSpeed;
+
+}
+
+
 
 // drawing the closing screen
 
