@@ -218,34 +218,34 @@ function draw() {
 // drawing the intro screen
 
 function drawIntroScreen() {
-  background("rgba(200, 212, 244, 1)");
+  background("rgba(176, 205, 225, 1)");
 
-  // title
+  // title "The Breathing Room"
   textAlign(CENTER, TOP);
-  fill("rgb(0,0,0)");
+  fill("rgb(70,75,82)");
   textSize(32);
   text("The Breathing Room", width/2, 40);
 
   // instructions
   textSize(16);
+  fill("rgb(100,115,130)")
   let instructions = 'This project uses your webcam and face tracking\n to guide you through a simple box breathing exercise.\nSit comfortably and look at the screen\nMake sure your face is visible to the camera\nFollow the circle and the text instructions.'
 
   text(instructions, width/2, 110);
 
   // button to enter
-
   let buttonWidth = 200;
   let buttonHeight = 50;
   let buttonX = width/2 - buttonWidth/2;
   let buttonY = height - 140;
 
-  fill("rgb(0,0,0)");
+  fill("rgb(246,226,231)");
   noStroke();
   rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
 
-  fill("rgba(255, 255, 255, 1)");
+  fill("rgba(70, 93, 115, 1)");
   textSize(20);
-  text('Start Breathing', width/2, buttonY+buttonHeight/2-5);
+  text('Start Breathing', width/2, buttonY+buttonHeight/2-8);
 
 
 }
@@ -259,10 +259,16 @@ function gotFaces(results) {
 function mousePressed() {
 
   if (currentScreen == 'intro') {
+
+    // same as the button measurements above
     let buttonWidth = 200;
     let buttonHeight = 50;
     let buttonX = width/2 - buttonWidth/2;
     let buttonY = height - 140;
+
+    // if the mouse is within the button
+    // click it to change the screen to the breathing exercise
+  
 
     if (mouseX > buttonX && mouseX < buttonX + buttonWidth && 
       mouseY > buttonY && mouseY < buttonY + buttonHeight) {
