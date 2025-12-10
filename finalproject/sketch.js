@@ -256,8 +256,8 @@ function drawIntroScreen() {
   'to gently guide you through a simple, grounding breathing exercise.\n' + 
   'Sit comfortably, relax your shoulders, and look at the screen.\n' +
   'Make sure your face is visible to the camera.\n' +
-  'When you are ready, follow the expanding circle and the text prompts as you breathe.' +
-  'The circle will turn green when your breathing matches the guide,' +
+  'When you are ready, follow the expanding circle and the text prompts as you breathe.\n'+
+  'The circle will turn green when your breathing matches the guide,\n' +
   'and red when it does not. This simply helps you stay aware of your breathing.'
 
   text(instructions, width/2, 110);
@@ -282,7 +282,7 @@ function drawIntroScreen() {
 function drawEndScreen() {
 background("rgb(253, 246, 201)");
 textAlign(CENTER, TOP);
-fill("rgb(47, 62, 70");
+fill("rgb(47, 62, 70)");
 textSize(32);
 text('Thank You for Breathing', width/2, 40);
 
