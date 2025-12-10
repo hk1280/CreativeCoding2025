@@ -60,13 +60,17 @@ function draw() {
     drawIntroScreen();
     return;
   }
+  
+  // returns stops the  code there so the breathing code doesn't run
+  // it ensures that each screen is clean and isolated
+  // noloop stops the canvas from updating, not good for animations 
 
     if (currentScreen == 'end') {
     drawEndScreen();
     return;
   }
 
-  background("rgba(121, 177, 240, 1)");
+  background("rgba(186,208,230,1)");
 
   // millis() gives the time in ms since the sketch started
   // elapsed is how much time has passed since the current breathing cycle began
@@ -121,7 +125,7 @@ function draw() {
     let leftLip = faces[0].keypoints[61];
     let rightLip = faces[0].keypoints[291];
 
-    // fill("rgb(0,0,0)");
+    // hiding it so the user cannot see
     noFill();
     noStroke();
     circle(upperLip.x, upperLip.y, 8);
@@ -172,15 +176,15 @@ function draw() {
     if (detectedPhase == 'EXHALE') inSync = true;
   }
 
-  // if no face is detected then purple
+  // if no face is detected then yellow
   if (faces.length == 0) {
-    fill("rgba(214, 162, 246, 1)");
+    fill("rgba(253, 246, 201, 1)");
     // if you're in sync then green
   } else if (inSync) {
-    fill("rgba(161, 252, 185, 1)");
+    fill("rgba(207, 245, 231, 1)");
   } else {
-    // not in sync then red
-    fill("rgba(251, 125, 125, 1)");
+    // not in sync then pink
+    fill("rgba(246, 226, 231, 1)");
   }
 
   // breathing circle
@@ -190,7 +194,7 @@ function draw() {
   // setting the instructions for the guided breathing
   textSize(28);
   textAlign(CENTER, TOP);
-  fill("rgba(255, 255, 255, 1)");
+  fill("rgba(47, 62, 70, 1)");
 
   let instructionText = '';
   if (guidePhase == 'INHALE') {
@@ -223,11 +227,11 @@ function draw() {
   let endButtonX = width/2 - endButtonWidth/2;
   let endButtonY = height - 60;
 
-  fill("rgb(216,234,210)");
+  fill("rgb(207,245,231)");
   noStroke();
   rect(endButtonX, endButtonY, endButtonWidth, endButtonHeight,10);
   
-  fill("rgb(73,98,74)");
+  fill("rgb(47,62,70)");
   textSize(18);
   textAlign(CENTER, CENTER);
   text('End Exercise', width/2, endButtonY + endButtonHeight/2);
@@ -247,7 +251,7 @@ function drawIntroScreen() {
 
   // instructions
   textSize(16);
-  fill("rgb(100,115,130)")
+  fill("rgb(147,62,70)")
   let instructions = 'This project uses your webcam and face tracking\n to guide you through a simple box breathing exercise.\nSit comfortably and look at the screen\nMake sure your face is visible to the camera\nFollow the circle and the text instructions.'
 
   text(instructions, width/2, 110);
@@ -262,7 +266,7 @@ function drawIntroScreen() {
   noStroke();
   rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
 
-  fill("rgba(70, 93, 115, 1)");
+  fill("rgba(47, 62, 70, 1)");
   textSize(20);
   text('Start Your Calm', width/2, buttonY+buttonHeight/2-8);
 }
@@ -270,14 +274,14 @@ function drawIntroScreen() {
 // drawing the closing screen
 
 function drawEndScreen() {
-background("rgb(176,205,225)");
+background("rgb(253, 246, 201)");
 textAlign(CENTER, TOP);
-fill("rgb(70,75,82");
+fill("rgb(47, 62, 70");
 textSize(32);
 text('Thank You for Breathing', width/2, 40);
 
 textSize(16);
-fill("rgb(0,0,0)");
+fill("rgb(47, 62, 70)");
 let closingText = 'You have completed this breathing session.\nNotice how you feel compared to before.\n'
 
 text(closingText, width/2, 120);
