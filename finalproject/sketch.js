@@ -21,11 +21,13 @@ let totalDuration;
 let pMillis = 0;
 
 // circle radius
-let circleRadius = 80;
+let circleRadius = 80; // current radius of breathing circle
 let circleMin = 80;
 let circleMax = 180;
 
 // setting the 2 different screens, intro & breathing
+// intro is to show instructions with call to action button to enter
+// the breathe page - the breathing exercise
 let currentScreen = 'intro';
 
 
@@ -63,7 +65,6 @@ function draw() {
 
   // millis() gives the time in ms since the sketch started
   // elapsed is how much time has passed since the current breathing cycle began
-
   let elapsed = millis()-pMillis;
 
   if(elapsed>totalDuration){
@@ -71,26 +72,31 @@ function draw() {
     elapsed = 0; // reset elapsed
   }
 
+  // breathing phases of inhale, hold, exhale
+
   let guidePhase; // setting the different phases of inhale, hold, exhale
   let phaseTime; // fraction to tell us how far we are into that phase
   
   if (elapsed < inhaleDuration) {
+    // if elapsed is less than the first 4 seconds then inhale stage
     guidePhase = 'INHALE';
-    phaseTime = elapsed / inhaleDuration;
+    phaseTime = elapsed / inhaleDuration; // 0 to 1 over the 4 seconds
   } else if (elapsed < inhaleDuration + holdDuration) {
+    // if elapsed is between the next 4 seconds then in hold stage
     guidePhase = 'HOLD';
-    phaseTime = (elapsed - inhaleDuration) / holdDuration;
+    phaseTime = (elapsed - inhaleDuration) / holdDuration; // 0 to 1 over those 4 seconds
   } else {
-    guidePhase = 'EXHALE';
-    phaseTime = (elapsed - inhaleDuration - holdDuration) / exhaleDuration;
+    guidePhase = 'EXHALE'; // last 4 seconds
+    phaseTime = (elapsed - inhaleDuration - holdDuration) / exhaleDuration; // 0 to 1 over 4 seconds
   }
 
-  // setting the radius by phase
+  // setting the radius of the cirlce by phase
 
-  let targetRadius;
+  let targetRadius; // target radius of circle
 
   if (guidePhase == 'INHALE') {
     // from small to big
+    // lerp(start,stop,amt);
     targetRadius = lerp(circleMin, circleMax, phaseTime); 
   } else if (guidePhase == 'HOLD') {
     // keep at maximum size
@@ -104,14 +110,14 @@ function draw() {
   circleRadius = lerp(circleRadius, targetRadius, 0.1);
 
   // if we have a face detected
-
   if (faces.length>0){
     let upperLip = faces[0].keypoints[13];
     let bottomLip = faces[0].keypoints[14];
     let leftLip = faces[0].keypoints[61];
     let rightLip = faces[0].keypoints[291];
 
-    fill("rgb(0,0,0)");
+    // fill("rgb(0,0,0)");
+    noFill();
     noStroke();
     circle(upperLip.x, upperLip.y, 8);
     circle(bottomLip.x, bottomLip.y, 8);
@@ -142,17 +148,22 @@ function draw() {
 
     if (mouthRatio < 0.08) {
       detectedPhase = 'INHALE';
-    } else if (mouthRatio > 0.08) {
+    } else {
       detectedPhase = 'EXHALE';
     }
 
     // boolean to see if the user is in sync with the guided breathing
+    // starts as false and will be set to true if detected matches the guide
 
     let inSync = false;
 
     
     // textSize(32);
     // fill("rgba(255, 255, 255, 1)");
+
+    // if the guide says to inhale or hold then the mouth should look like it's inhaling (mouth more closed)
+    // if the guide says to exhale, then we should look like we're exhaling (mouth more open)
+    // if these are all aligned, then in sync is true
 
     if (guidePhase == 'INHALE' || guidePhase == 'HOLD') {
       if (detectedPhase == 'INHALE') inSync = true;
@@ -162,17 +173,14 @@ function draw() {
 
   // if no face is detected then purple
   if (faces.length == 0) {
-    // stroke("rgba(0,0,0,1)");
     fill("rgba(214, 162, 246, 1)");
 
     // if you're in sync then green
   } else if (inSync) {
-    // stroke("rgba(0,0,0,0.5)");
     fill("rgba(161, 252, 185, 1)");
 
   } else {
     // not in sync then red
-    // stroke("rgba(0,0,0,0.5)");
     fill("rgba(251, 125, 125, 1)");
   }
 
@@ -245,9 +253,7 @@ function drawIntroScreen() {
 
   fill("rgba(70, 93, 115, 1)");
   textSize(20);
-  text('Start Breathing', width/2, buttonY+buttonHeight/2-8);
-
-
+  text('Start Your Calm', width/2, buttonY+buttonHeight/2-8);
 }
 
 // Callback function for when faceMesh outputs data
@@ -268,6 +274,7 @@ function mousePressed() {
 
     // if the mouse is within the button
     // click it to change the screen to the breathing exercise
+    // reset pMillis so the timer starts fresh
   
 
     if (mouseX > buttonX && mouseX < buttonX + buttonWidth && 
