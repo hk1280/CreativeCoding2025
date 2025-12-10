@@ -11,20 +11,21 @@ let video;
 let faces = [];
 let options = { maxFaces: 1, refineLandmarks: false, flipHorizontal: false };
 
+// breathing in milliseconds
 let inhaleDuration = 4000;
 let holdDuration = 4000;
 let exhaleDuration = 4000;
 let totalDuration;
 
 // stores the time in milliseconds when the current breathing cycle started
-
 let pMillis = 0;
 
-// current radius
+// circle radius
 let circleRadius = 80;
-
 let circleMin = 80;
 let circleMax = 180;
+
+let currentScreen = 'intro';
 
 
 function preload() {
@@ -37,13 +38,13 @@ function setup() {
 
   // total duration of one full breathing cycle in ms
   // 12 seconds (12,000 ms)
-
   totalDuration = inhaleDuration + holdDuration + exhaleDuration;
 
   // Create the webcam video and hide it
   video = createCapture(VIDEO);
   video.size(640, 480);
   video.hide();
+
   // Start detecting faces from the webcam video
   faceMesh.detectStart(video, gotFaces);
 }
@@ -51,6 +52,13 @@ function setup() {
 function draw() {
   // Draw the webcam video
   image(video, 0, 0, width, height);
+
+  if (currentScreen == 'intro') {
+    drawIntroScreen();
+    return;
+  }
+
+  background("rgba(121, 177, 240, 1)");
 
   // millis() gives the time in ms since the sketch started
   // elapsed is how much time has passed since the current breathing cycle began
@@ -142,8 +150,8 @@ function draw() {
     let inSync = false;
 
     
-    textSize(32);
-    fill("rgba(255, 255, 255, 1)");
+    // textSize(32);
+    // fill("rgba(255, 255, 255, 1)");
 
     if (guidePhase == 'INHALE' || guidePhase == 'HOLD') {
       if (detectedPhase == 'INHALE') inSync = true;
@@ -153,25 +161,29 @@ function draw() {
 
   // if no face is detected then purple
   if (faces.length == 0) {
-    // stroke("rgba(0,0,0,0.5)");
-    fill("rgba(214, 162, 246, 0.5)");
+    // stroke("rgba(0,0,0,1)");
+    fill("rgba(214, 162, 246, 1)");
 
     // if you're in sync then green
   } else if (inSync) {
     // stroke("rgba(0,0,0,0.5)");
-    fill("rgba(161, 252, 185, 0.5)");
+    fill("rgba(161, 252, 185, 1)");
 
   } else {
     // not in sync then red
     // stroke("rgba(0,0,0,0.5)");
-    fill("rgba(251, 125, 125, 0.5)");
+    fill("rgba(251, 125, 125, 1)");
   }
- 
-  // strokeWeight(3);
+
+  // breathing circle
+  noStroke();
   circle(width/2, height/2, circleRadius*2);
 
   // setting the instructions for the guided breathing
   textSize(28);
+  textAlign(CENTER, TOP);
+  fill("rgba(255, 255, 255, 1)");
+
 
   let instructionText = '';
   if (guidePhase == 'INHALE') {
@@ -182,7 +194,8 @@ function draw() {
     instructionText = "Breathe out slowly"
   }
 
-  text(instructionText, width/2, height/2);
+  text(instructionText, width/2, 20);
+
 
   textAlign(LEFT, TOP);
   textSize(16);
@@ -208,7 +221,41 @@ function draw() {
 }
 }
 
+// intro screen
 
+// drawing the intro screen
+function drawIntroScreen() {
+  background("rgba(56, 45, 174, 1)");
+
+  // title
+  textAlign(CENTER, TOP);
+  fill(255);
+  textSize(32);
+  text("Guided Breathing", width/2, 40);
+
+  // instructions
+  textSize(16);
+  let instructions = 'This project uses your webcam and face tracking\n to detect how you breathe and guide you through\na simple box breathing exercise.\nSit comfortably and look at the screen\nMake sure your face is visible to the camera\nFollow the circle and the text instructions.'
+
+  text(instructions, width/2, 110);
+
+  // button to enter
+
+  let buttonWidth = 200;
+  let buttonHeight = 50;
+  let buttonX = width/2 - buttonWidth/2;
+  let buttonY = height - 140;
+
+  fill("rgb(0,0,0)");
+  noStroke();
+  rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
+
+  fill(0);
+  textSize(20);
+  text('Start Breathing', width/2, buttonY+buttonHeight/2-5);
+
+
+}
 
 // Callback function for when faceMesh outputs data
 function gotFaces(results) {
@@ -217,8 +264,22 @@ function gotFaces(results) {
 }
 
 function mousePressed() {
+
+  if (currentScreen == 'intro') {
+    let buttonWidth = 200;
+    let buttonHeight = 50;
+    let buttonX = width/2 - buttonWidth/2;
+    let buttonY = height - 140;
+
+    if (mouseX > buttonX && mouseX < buttonX + buttonWidth && 
+      mouseY > buttonY && mouseY < buttonY + buttonHeight) {
+        currentScreen = 'breathe';
+        pMillis = millis();
+      }
+  } else if (currentScreen == 'breathe') {
   if (faces.length>0) {
   let mouth = faces[0].lips.keypoints;
   console.log(mouth);
   }
+}
 }
