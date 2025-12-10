@@ -258,7 +258,7 @@ function drawIntroScreen() {
   'Make sure your face is visible to the camera.\n' +
   'When you are ready, follow the expanding circle and the text prompts as you breathe.\n'+
   'The circle will turn green when your breathing matches the guide,\n' +
-  'and red when it does not. This simply helps you stay aware of your breathing.'
+  'and pink when it does not. This simply helps you stay aware of your breathing.'
 
   text(instructions, width/2, 110);
 
