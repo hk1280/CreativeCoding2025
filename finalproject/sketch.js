@@ -245,14 +245,20 @@ function drawIntroScreen() {
 
   // title "The Breathing Room"
   textAlign(CENTER, TOP);
-  fill("rgb(70,75,82)");
+  fill("rgb(47, 62, 70)");
   textSize(32);
   text("The Breathing Room", width/2, 40);
 
   // instructions
   textSize(16);
-  fill("rgb(147,62,70)")
-  let instructions = 'This project uses your webcam and face tracking\n to guide you through a simple box breathing exercise.\nSit comfortably and look at the screen\nMake sure your face is visible to the camera\nFollow the circle and the text instructions.'
+  fill("rgb(47, 62, 70)")
+  let instructions = 'This experience uses your webcam\n' +
+  'to gently guide you through a simple, grounding breathing exercise.\n' + 
+  'Sit comfortably, relax your shoulders, and look at the screen.\n' +
+  'Make sure your face is visible to the camera.\n' +
+  'When you are ready, follow the expanding circle and the text prompts as you breathe.' +
+  'The circle will turn green when your breathing matches the guide,' +
+  'and red when it does not. This simply helps you stay aware of your breathing.'
 
   text(instructions, width/2, 110);
 
@@ -262,13 +268,13 @@ function drawIntroScreen() {
   let buttonX = width/2 - buttonWidth/2;
   let buttonY = height - 140;
 
-  fill("rgb(246,226,231)");
+  fill("rgb(253, 246, 201)");
   noStroke();
   rect(buttonX, buttonY, buttonWidth, buttonHeight, 10);
 
   fill("rgba(47, 62, 70, 1)");
   textSize(20);
-  text('Start Your Calm', width/2, buttonY+buttonHeight/2-8);
+  text('Begin Session', width/2, buttonY+buttonHeight/2-8);
 }
 
 // drawing the closing screen
@@ -282,7 +288,9 @@ text('Thank You for Breathing', width/2, 40);
 
 textSize(16);
 fill("rgb(47, 62, 70)");
-let closingText = 'You have completed this breathing session.\nNotice how you feel compared to before.\n'
+let closingText = 'You have completed this breathing session.\n'
++ 'Take a moment to notice how your body feels now.\n'
++ 'Carry this calm with you into the rest of your day.'
 
 text(closingText, width/2, 120);
 }
