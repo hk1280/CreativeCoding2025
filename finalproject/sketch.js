@@ -206,22 +206,22 @@ function draw() {
 
   textAlign(LEFT, TOP);
   textSize(16);
-  text("Guide phase: " + guidePhase, 10, 10);
+  text("Guide phase: " + guidePhase, 10, height - 60);
 
   // if a face is detected then the phase it detects you in
   // or if it's not detected
 
   if (faces.length > 0) {
-    text("Detected phase: " + detectedPhase, 10, 30);
-    text("mouthRatio: " + mouthRatio.toFixed(3), 10, 50);
+    text("Detected phase: " + detectedPhase, 10, height - 40);
+    text("mouthRatio: " + mouthRatio.toFixed(3), 10, height - 20);
   } else {
-    text("No face detected", 10, 70);
+    text("No face detected", 10, height - 40);
   }
 
   let endButtonWidth = 180;
   let endButtonHeight = 40;
   let endButtonX = width/2 - endButtonWidth/2;
-  let endButtonY = height - 80;
+  let endButtonY = height - 60;
 
   fill("rgb(216,234,210)");
   noStroke();
@@ -315,7 +315,7 @@ function mousePressed() {
   let endButtonWidth = 180;
   let endButtonHeight = 40;
   let endButtonX = width/2 - endButtonWidth/2;
-  let endButtonY = height - 80;
+  let endButtonY = height - 60;
   
   if (mouseX > endButtonX && mouseX < endButtonX + endButtonWidth &&
     mouseY > endButtonY && mouseY < endButtonY+endButtonHeight){
