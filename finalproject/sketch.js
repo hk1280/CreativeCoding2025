@@ -362,7 +362,7 @@ function mousePressed() {
 
     // if the mouse is within the button
     // click it to change the screen to the breathing exercise
-    // reset pMillis so the timer starts fresh
+    // reset pMillis is so the timer starts fresh
   
 
     if (mouseX > buttonX && mouseX < buttonX + buttonWidth && 
