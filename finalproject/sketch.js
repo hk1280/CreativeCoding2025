@@ -278,7 +278,7 @@ function drawIntroScreen() {
   let buttonWidth = 200;
   let buttonHeight = 50;
   let buttonX = width/2 - buttonWidth/2;
-  let buttonY = height - 140;
+  let buttonY = height - 180;
 
   fill("rgb(253, 246, 201)");
   noStroke();
@@ -301,11 +301,17 @@ function drawNoise() {
   noFill();
 
   beginShape();
-  let circleX, circleY;
+  let circleX, circleY; // to store the position of the circle that will ride the wave
+  // loop starting from 0 to width increasing at each point
   for (let i=0; i<width; i++) {
-    let yPos = noise(noisePosition) * 80 - 40 + height-50;
+    let yPos = noise(noisePosition) * 80 - 40 + height-50; 
+    // setting the vertical position of the wave
+    // positioning at the bottom of canvas
+  
+    // adds the point and moves forward throught noisePosition
     vertex(i, yPos);
     noisePosition = noisePosition + noiseSpeed;
+    // when the loop reaches the middle of the canvas, the circle rides the wave there
     if (i == width/2) {
       circleX = i;
       circleY = yPos;
@@ -352,7 +358,7 @@ function mousePressed() {
     let buttonWidth = 200;
     let buttonHeight = 50;
     let buttonX = width/2 - buttonWidth/2;
-    let buttonY = height - 140;
+    let buttonY = height - 180;
 
     // if the mouse is within the button
     // click it to change the screen to the breathing exercise
