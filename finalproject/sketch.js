@@ -25,7 +25,7 @@ let circleRadius = 80; // current radius of breathing circle
 let circleMin = 80;
 let circleMax = 180;
 
-// setting the 2 different screens, intro & breathing
+// setting the 3 different screens, intro & breathing & end
 // intro is to show instructions with call to action button to enter
 // the breathe page - the breathing exercise
 let currentScreen = 'intro';
@@ -58,6 +58,11 @@ function draw() {
 
   if (currentScreen == 'intro') {
     drawIntroScreen();
+    return;
+  }
+
+    if (currentScreen == 'end') {
+    drawEndScreen();
     return;
   }
 
@@ -157,10 +162,6 @@ function draw() {
 
     let inSync = false;
 
-    
-    // textSize(32);
-    // fill("rgba(255, 255, 255, 1)");
-
     // if the guide says to inhale or hold then the mouth should look like it's inhaling (mouth more closed)
     // if the guide says to exhale, then we should look like we're exhaling (mouth more open)
     // if these are all aligned, then in sync is true
@@ -174,11 +175,9 @@ function draw() {
   // if no face is detected then purple
   if (faces.length == 0) {
     fill("rgba(214, 162, 246, 1)");
-
     // if you're in sync then green
   } else if (inSync) {
     fill("rgba(161, 252, 185, 1)");
-
   } else {
     // not in sync then red
     fill("rgba(251, 125, 125, 1)");
@@ -195,11 +194,11 @@ function draw() {
 
   let instructionText = '';
   if (guidePhase == 'INHALE') {
-    instructionText = "Breathe in slowly";
+    instructionText = "Slowly breathe in through your nose";
   } else if (guidePhase == 'HOLD') {
     instructionText = "Hold your breath";
   } else {
-    instructionText = "Breathe out slowly"
+    instructionText = "Slowly breathe out of your mouth"
   }
 
   text(instructionText, width/2, 20);
@@ -217,9 +216,21 @@ function draw() {
     text("mouthRatio: " + mouthRatio.toFixed(3), 10, 50);
   } else {
     text("No face detected", 10, 70);
-
   }
+
+  let endButtonWidth = 180;
+  let endButtonHeight = 40;
+  let endButtonX = width/2 - endButtonWidth/2;
+  let endButtonY = height - 80;
+
+  fill("rgb(216,234,210)");
+  noStroke();
+  rect(endButtonX, endButtonY, endButtonWidth, endButtonHeight,10);
   
+  fill("rgb(73,98,74)");
+  textSize(18);
+  textAlign(CENTER, CENTER);
+  text('End Exercise', width/2, endButtonY + endButtonHeight/2);
 }
 }
 
@@ -256,6 +267,22 @@ function drawIntroScreen() {
   text('Start Your Calm', width/2, buttonY+buttonHeight/2-8);
 }
 
+// drawing the closing screen
+
+function drawEndScreen() {
+background("rgb(176,205,225)");
+textAlign(CENTER, TOP);
+fill("rgb(70,75,82");
+textSize(32);
+text('Thank You for Breathing', width/2, 40);
+
+textSize(16);
+fill("rgb(0,0,0)");
+let closingText = 'You have completed this breathing session.\nNotice how you feel compared to before.\n'
+
+text(closingText, width/2, 120);
+}
+
 // Callback function for when faceMesh outputs data
 function gotFaces(results) {
   // Save the output to the faces variable
@@ -283,9 +310,23 @@ function mousePressed() {
         pMillis = millis();
       }
   } else if (currentScreen == 'breathe') {
+  
+  // same as above end button measurements
+  let endButtonWidth = 180;
+  let endButtonHeight = 40;
+  let endButtonX = width/2 - endButtonWidth/2;
+  let endButtonY = height - 80;
+  
+  if (mouseX > endButtonX && mouseX < endButtonX + endButtonWidth &&
+    mouseY > endButtonY && mouseY < endButtonY+endButtonHeight){
+      currentScreen = 'end';
+    } else {
   if (faces.length>0) {
   let mouth = faces[0].lips.keypoints;
   console.log(mouth);
   }
+    }
+  
+
 }
 }
