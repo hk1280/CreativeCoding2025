@@ -351,7 +351,7 @@ background("rgb(253, 246, 201)");
 textAlign(CENTER, TOP);
 fill("rgb(47, 62, 70)");
 textSize(32);
-text('Thank You for Breathing', width/2, 40);
+text('Thank You for Breathing.', width/2, 40);
 
 textSize(18);
 fill("rgb(47, 62, 70)");
