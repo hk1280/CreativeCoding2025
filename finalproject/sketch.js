@@ -47,7 +47,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(640, 480);
+  // taking up the full screen so the video can be centered properly
+  createCanvas(windowWidth, windowHeight);
 
   // total duration of one full breathing cycle in ms
   // 12 seconds (12,000 ms)
@@ -63,8 +64,15 @@ function setup() {
 }
 
 function draw() {
-  // Draw the webcam video
-  image(video, 0, 0, width, height);
+  // Draw the webcam video 
+  // positioning it in the center of the screen
+  // changed the canvas to entire screen
+  // image function is (img, x, y, [width], [height])
+
+  let videoX = (width - video.width) /2;
+  let videoY = (height - video.height) /2;
+
+  image(video, videoX, videoY);
 
   if (currentScreen == 'intro') {
     drawIntroScreen();
